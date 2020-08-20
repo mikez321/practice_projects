@@ -21,15 +21,6 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 0, @tree.depth(bill)
   end
 
-  def test_a_tree_knows_the_depth_of_a_node
-    @tree.insert(61, "Bill & Ted's Excellent Adventure")
-    john = Node.new(16, "Johnny English")
-
-    @tree.set_node(john, @tree.root)
-
-    assert_equal 1, @tree.depth(john)
-  end
-
   def test_it_can_set_a_node_to_the_left
     @tree.insert(61, "Bill & Ted's Excellent Adventure")
 
@@ -50,7 +41,7 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal john, @tree.root.right
   end
 
-  def test_it_returns_false_if_a_node_exists
+  def test_it_returns_false_if_a_node_cannot_be_placed
     @tree.insert(61, "Bill & Ted's Excellent Adventure")
 
     john = Node.new(90, "Johnny English")
@@ -74,6 +65,15 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal false, current_node == @tree.root
     assert_equal true, current_node == john
+  end
+
+  def test_a_tree_knows_the_depth_of_a_node
+    @tree.insert(61, "Bill & Ted's Excellent Adventure")
+    john = Node.new(16, "Johnny English")
+
+    @tree.set_node(john, @tree.root)
+
+    assert_equal 1, @tree.depth(john)
   end
 
   def test_it_can_insert_a_node
