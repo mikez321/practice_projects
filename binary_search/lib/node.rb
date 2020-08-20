@@ -1,6 +1,6 @@
 class Node
   attr_reader :rating, :title
-  attr_accessor :left, :right 
+  attr_accessor :left, :right
 
   def initialize(rating, title)
     @rating = rating
@@ -9,7 +9,7 @@ class Node
     @right = nil
   end
 
-  def depth
-    0
+  def leaf?
+    left.nil? && right.nil? ? true : false
   end
 end

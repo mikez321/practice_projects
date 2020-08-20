@@ -20,4 +20,20 @@ class NodeTest < Minitest::Test
     assert_nil @node.left
     assert_nil @node.right
   end
+
+  def test_it_is_a_leaf_if_it_has_no_connected_nodes
+    node1 = Node.new(90, "Gentleman Broncos")
+    node2 = Node.new(30, "A Detective Calls")
+    node3 = Node.new(91, "Sin City")
+    node4 = Node.new(95, "The Watchmen")
+
+    node1.left = node2
+    node1.right = node3
+    node3.right = node4
+
+    assert_equal false, node1.leaf?
+    assert_equal true, node2.leaf?
+    assert_equal false, node3.leaf?
+    assert_equal true, node4.leaf?
+  end
 end
