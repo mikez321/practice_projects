@@ -11,14 +11,12 @@ class BinarySearchTree
     new_node = Node.new(rating, title)
     if @root.nil?
       @root = new_node
-    elsif
+    else
       current_node = @root
-      if set_node(new_node, current_node)
-
-      else
+      until next_node(new_node, current_node).nil?
         current_node = next_node(new_node, current_node)
-        set_node(new_node, current_node)
       end
+      set_node(new_node, current_node)
     end
     depth(new_node)
   end
