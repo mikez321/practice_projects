@@ -112,4 +112,10 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 2, @tree.depth_of(50)
   end
 
+  def test_it_knows_the_highest_rated_movie_in_the_tree
+    expected = {'Sharknado 3' => 92}
+
+    assert_equal expected, @tree.max
+  end
+
 end
