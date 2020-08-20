@@ -36,4 +36,12 @@ class NodeTest < Minitest::Test
     assert_equal false, node3.leaf?
     assert_equal true, node4.leaf?
   end
+
+  def test_it_can_give_a_hash_readout_of_its_attributes
+    node1 = Node.new(90, "Gentleman Broncos")
+
+    expected = { "Gentleman Broncos" => 90 }
+
+    assert_equal expected, node1.info
+  end
 end

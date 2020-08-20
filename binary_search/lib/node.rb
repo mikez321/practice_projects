@@ -12,4 +12,8 @@ class Node
   def leaf?
     left.nil? && right.nil? ? true : false
   end
+
+  def info
+    { @title => @rating }
+  end
 end
