@@ -12,7 +12,7 @@ class NodeTest < Minitest::Test
   end
 
   def test_it_has_a_score_and_movie_title
-    assert_instance_of Integer, @node.score
+    assert_instance_of Integer, @node.rating
     assert_equal "Gentleman Broncos", @node.title
   end
 end
