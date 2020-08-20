@@ -73,7 +73,7 @@ class BinarySearchTree
     until current_node.right.nil?
       current_node = current_node.right
     end
-    { current_node.title => current_node.rating }
+    current_node.info
   end
 
   def min
@@ -81,6 +81,6 @@ class BinarySearchTree
     until current_node.left.nil?
       current_node = current_node.left
     end
-    { current_node.title => current_node.rating }
+    current_node.info
   end
 end
