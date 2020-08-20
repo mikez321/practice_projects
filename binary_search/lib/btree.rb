@@ -67,4 +67,12 @@ class BinarySearchTree
     rating_node = Node.new(rating, "This node is like a little traveler!")
     depth(rating_node)
   end
+
+  def max
+    current_node = @root
+    until current_node.right.nil?
+      current_node = current_node.right
+    end
+    { current_node.title => current_node.rating }
+  end
 end
