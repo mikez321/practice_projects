@@ -15,4 +15,9 @@ class NodeTest < Minitest::Test
     assert_instance_of Integer, @node.rating
     assert_equal "Gentleman Broncos", @node.title
   end
+
+  def test_it_starts_with_no_left_or_right_nodes
+    assert_nil @node.left
+    assert_nil @node.right
+  end
 end
