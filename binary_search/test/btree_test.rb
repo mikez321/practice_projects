@@ -107,4 +107,9 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal false, @tree.include?(72)
   end
 
+  def test_it_can_return_the_depth_of_a_rating
+    assert_equal 1, @tree.depth_of(92)
+    assert_equal 2, @tree.depth_of(50)
+  end
+
 end
