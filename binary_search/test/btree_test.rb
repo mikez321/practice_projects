@@ -18,14 +18,16 @@ class BinarySearchTreeTest < Minitest::Test
 
     @tree.root = bill
 
-    assert_equal 0, @tree.depth(bill.rating)
+    assert_equal 0, @tree.depth(bill)
   end
 
-  def test_a_tree_knows_the_depth_of_a_rating
+  def test_a_tree_knows_the_depth_of_a_node
     @tree.insert(61, "Bill & Ted's Excellent Adventure")
-    @tree.insert(16, "Johnny English")
+    john = Node.new(16, "Johnny English")
 
-    assert_equal 1, @tree.depth(16)
+    @tree.set_node(john, @tree.root)
+
+    assert_equal 1, @tree.depth(john)
   end
 
   def test_it_can_set_a_node_to_the_left
@@ -75,7 +77,6 @@ class BinarySearchTreeTest < Minitest::Test
   end
 
   def test_it_can_insert_a_node
-    skip
     assert_equal 0, @tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, @tree.insert(16, "Johnny English")
     assert_equal 1, @tree.insert(92, "Sharknado 3")
