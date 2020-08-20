@@ -51,4 +51,15 @@ class BinarySearchTree
     end
     depth(new_node)
   end
+
+  def include?(rating)
+    rating_node = Node.new(rating, "This node is like a little hunter!")
+    current_node = @root
+    until next_node(rating_node, current_node).nil?
+      return true if rating_node.rating == current_node.rating
+
+      current_node = next_node(rating_node, current_node)
+    end
+    false
+  end
 end
