@@ -31,7 +31,7 @@ class BinarySearchTree
   def depth(node)
     current_node = @root
     depth = 0
-    until node == current_node
+    until node.rating == current_node.rating
       depth += 1
       current_node = next_node(node, current_node)
     end
@@ -61,5 +61,10 @@ class BinarySearchTree
       current_node = next_node(rating_node, current_node)
     end
     false
+  end
+
+  def depth_of(rating)
+    rating_node = Node.new(rating, "This node is like a little traveler!")
+    depth(rating_node)
   end
 end
