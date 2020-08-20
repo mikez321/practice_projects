@@ -118,4 +118,10 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal expected, @tree.max
   end
 
+  def test_it_knows_the_lowest_rated_movie_in_the_tree
+    expected = {'Johnny English' => 16}
+
+    assert_equal expected, @tree.min
+  end
+
 end
