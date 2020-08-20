@@ -75,4 +75,12 @@ class BinarySearchTree
     end
     { current_node.title => current_node.rating }
   end
+
+  def min
+    current_node = @root
+    until current_node.left.nil?
+      current_node = current_node.left
+    end
+    { current_node.title => current_node.rating }
+  end
 end
