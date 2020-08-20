@@ -12,37 +12,24 @@ class BinarySearchTree
     if @root.nil?
       @root = new_node
     elsif
-      @root.leaf?
-      set_node(new_node, @root)
-    elsif
       current_node = @root
-      set_node(new_node, current_node)
+      if set_node(new_node, current_node)
+
+      else
+        current_node = next_node(new_node, current_node)
+        set_node(new_node, current_node)
+      end
     end
-    depth(new_node.rating)
+    depth(new_node)
   end
 
-  def depth(rating)
-    left = depth_l(rating)
-    right = depth_r(rating)
-    left >= right ? left : right
-  end
 
-  def depth_l(rating)
+  def depth(node)
     current_node = @root
     depth = 0
-    until current_node.left.nil?
+    until node == current_node
       depth += 1
-      current_node = current_node.left
-    end
-    depth
-  end
-
-  def depth_r(rating)
-    current_node = @root
-    depth = 0
-    until current_node.right.nil?
-      depth += 1
-      current_node = current_node.right
+      current_node = next_node(node, current_node)
     end
     depth
   end
