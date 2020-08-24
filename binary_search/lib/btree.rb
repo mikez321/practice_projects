@@ -83,4 +83,33 @@ class BinarySearchTree
     end
     current_node.info
   end
+
+  def sort
+    movies = []
+    current_node = @root
+    max_node = until current_node.right.nil?
+      current_node = current_node.right
+    end
+    
+    current_node = @root
+    until current_node.leaf?
+      if current_node.left
+        current_node = lowest_rating(@root)
+        movies << current_node.info if !movies.include?(current_node.info)
+      elsif current_node.right
+        current_node = current_node.right
+        current_node = lowest_rating(current_node)
+        movies << current_node.info if !movies.include?(current_node.info)
+      end
+    end
+
+    movies
+  end
+
+  def lowest_rating(current_node)
+    until current_node.left.nil?
+      current_node = current_node.left
+    end
+    current_node
+  end
 end
