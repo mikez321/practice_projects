@@ -2,13 +2,20 @@
 # Ex: num_chars('oh heavens', 'h')
 # => 2
 
+require 'minitest/autorun'
+require 'minitest/pride'
+
 def num_chars(phrase, letter)
   split_phrase = phrase.split('')
   matches = split_phrase.map do |phrase_letter|
     phrase_letter == letter ? true : nil
   end.compact
-  print matches.length
+  matches.length
 end
 
 
-num_chars('she sells seashells down by the seashore', 's')
+class NumCharsTest < Minitest::Test
+  def test_it_can_return_number_of_occurrances_of_a_letter
+    assert_equal 8, num_chars('she sells seashells down by the seashore', 's')
+  end
+end
