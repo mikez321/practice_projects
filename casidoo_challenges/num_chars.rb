@@ -6,11 +6,9 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 def num_chars(phrase, letter)
-  split_phrase = phrase.split('')
-  matches = split_phrase.map do |phrase_letter|
+  phrase.split('').map do |phrase_letter|
     phrase_letter == letter ? true : nil
-  end.compact
-  matches.length
+  end.compact.length
 end
 
 
