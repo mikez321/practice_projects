@@ -112,6 +112,14 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 2, @tree.depth_of(50)
   end
 
+  def it_can_return_the_highest_and_lowest_rated_nodes
+    assert_instance_of Node, @tree.max_node
+    assert_instance_of Node, @tree.min_node
+
+    assert_equal 92, @tree.max_node.rating
+    assert_equal 16, @tree.min_node.rating
+  end
+
   def test_it_knows_the_highest_rated_movie_in_the_tree
     expected = {'Sharknado 3' => 92}
 
@@ -125,6 +133,7 @@ class BinarySearchTreeTest < Minitest::Test
   end
 
   def test_it_can_return_a_sorted_list_of_movies_in_the_tree
+    skip
     expected = [
       {"Johnny English"=>16},
       {"Hannibal Buress: Animal Furnace"=>50},

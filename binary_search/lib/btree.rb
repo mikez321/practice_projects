@@ -69,19 +69,11 @@ class BinarySearchTree
   end
 
   def max
-    current_node = @root
-    until current_node.right.nil?
-      current_node = current_node.right
-    end
-    current_node.info
+    max_node.info
   end
 
   def min
-    current_node = @root
-    until current_node.left.nil?
-      current_node = current_node.left
-    end
-    current_node.info
+    min_node.info
   end
 
   def sort
@@ -90,7 +82,7 @@ class BinarySearchTree
     max_node = until current_node.right.nil?
       current_node = current_node.right
     end
-    
+
     current_node = @root
     until current_node.leaf?
       if current_node.left
@@ -107,6 +99,22 @@ class BinarySearchTree
   end
 
   def lowest_rating(current_node)
+    until current_node.left.nil?
+      current_node = current_node.left
+    end
+    current_node
+  end
+
+  def max_node
+    current_node = @root
+    until current_node.right.nil?
+      current_node = current_node.right
+    end
+    current_node
+  end
+
+  def min_node
+    current_node = @root
     until current_node.left.nil?
       current_node = current_node.left
     end
