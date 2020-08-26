@@ -133,14 +133,23 @@ class BinarySearchTreeTest < Minitest::Test
   end
 
   def test_it_can_return_a_sorted_list_of_movies_in_the_tree
-    expected = [
-      {"Johnny English"=>16},
-      {"Hannibal Buress: Animal Furnace"=>50},
-      {"Bill & Ted's Excellent Adventure"=>61},
-      {"Sharknado 3"=>92}
-    ]
+    movie_tree = BinarySearchTree.new
+    movie_tree.insert(61, "Bill & Ted's Excellent Adventure")
+    movie_tree.insert(16, "Johnny English")
+    # movie_tree.insert(92, "Sharknado 3")
+    # movie_tree.insert(50, "Hannibal Buress: Animal Furnace")
+    # movie_tree.insert(8, "Signs")
+    # movie_tree.insert(99, "Gentlemen Broncos")
 
-    assert_equal expected, @tree.sort
+    expected = [
+      # {"Signs"=>8},
+      {"Johnny English"=>16},
+      # {"Hannibal Buress: Animal Furnace"=>50},
+      {"Bill & Ted's Excellent Adventure"=>61}
+      # {"Sharknado 3"=>92},
+      # {"Gentlemen Broncos"=>99}
+    ]
+    assert_equal expected, movie_tree.sort
   end
 
 end
