@@ -69,35 +69,35 @@ class BinarySearchTree
   end
 
   def max
-    max_node(@root).info
+    max_node_of(@root).info
   end
 
   def min
-    min_node(@root).info
+    min_node_of(@root).info
   end
 
-  def max_node(current_node)
+  def max_node_of(current_node)
     until current_node.right.nil?
       current_node = current_node.right
     end
     current_node
   end
 
-  def min_node(current_node)
+  def min_node_of(current_node)
     until current_node.left.nil?
       current_node = current_node.left
     end
     current_node
   end
 
-  def upper_node(current_node)
-    until current_node.rating ==
-      upper_node = current_node
-      current_node = current_node.left
-    end
-    upper_node
-  end
-
   def sort
+    movies = []
+    current_node = nil
+    until movies.last == max_node(@root).info
+      current_node = min_node(@root)
+      movies << current_node.info
+    end
+    require "pry"; binding.pry
+    movies
   end
 end
