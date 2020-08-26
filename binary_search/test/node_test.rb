@@ -44,4 +44,19 @@ class NodeTest < Minitest::Test
 
     assert_equal expected, node1.info
   end
+
+  def test_it_knows_nodes_above_it
+    node1 = Node.new(90, "Gentleman Broncos")
+    node2 = Node.new(30, "A Detective Calls")
+    node3 = Node.new(91, "Sin City")
+    node4 = Node.new(95, "The Watchmen")
+
+    node1.left = node2
+    node1.right = node3
+    node3.right = node4
+
+    assert_equal node3, node4.parent
+    assert_equal node1, node3.parent
+    assert_equal node1, node2.parent
+  end
 end

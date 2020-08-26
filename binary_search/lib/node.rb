@@ -1,12 +1,13 @@
 class Node
-  attr_reader :rating, :title
-  attr_accessor :left, :right
+  attr_reader :left, :right, :rating, :title
+  attr_accessor :parent
 
   def initialize(rating, title)
     @rating = rating
     @title = title
     @left = nil
     @right = nil
+    @parent = nil
   end
 
   def leaf?
@@ -15,5 +16,15 @@ class Node
 
   def info
     { @title => @rating }
+  end
+
+  def left=(node)
+    node.parent = self
+    @left = node
+  end
+
+  def right=(node)
+    node.parent = self
+    @right = node
   end
 end
