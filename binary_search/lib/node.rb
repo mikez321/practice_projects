@@ -1,6 +1,6 @@
 class Node
-  attr_reader :left, :right, :rating, :title
-  attr_accessor :parent
+  attr_reader :left, :right, :title
+  attr_accessor :parent, :rating
 
   def initialize(rating, title)
     @rating = rating

@@ -136,15 +136,15 @@ class BinarySearchTreeTest < Minitest::Test
     movie_tree = BinarySearchTree.new
     movie_tree.insert(61, "Bill & Ted's Excellent Adventure")
     movie_tree.insert(16, "Johnny English")
-    # movie_tree.insert(92, "Sharknado 3")
-    # movie_tree.insert(50, "Hannibal Buress: Animal Furnace")
-    # movie_tree.insert(8, "Signs")
-    # movie_tree.insert(99, "Gentlemen Broncos")
+    movie_tree.insert(92, "Sharknado 3")
+    movie_tree.insert(50, "Hannibal Buress: Animal Furnace")
+    movie_tree.insert(8, "Signs")
+    movie_tree.insert(99, "Gentlemen Broncos")
 
     expected = [
-      # {"Signs"=>8},
+      {"Signs"=>8},
       {"Johnny English"=>16},
-      # {"Hannibal Buress: Animal Furnace"=>50},
+      {"Hannibal Buress: Animal Furnace"=>50},
       {"Bill & Ted's Excellent Adventure"=>61}
       # {"Sharknado 3"=>92},
       # {"Gentlemen Broncos"=>99}

@@ -92,30 +92,12 @@ class BinarySearchTree
 
   def sort
     movies = []
-    current_node = @root
-    until movies.last == max_node_of(@root).info
-      if current_node.left
-        current_node = min_node_of(@root)
-        movies << current_node.info
-      elsif current_node.right
-        current_node = current_node.right
-        current_node = min_node_of(current_node)
-        movies << current_node.info
-      elsif current_node.leaf?
-        until current_node.parent.nil? || current_node.parent.right
-          current_node = current_node.parent
-          if current_node == @root && current_node.right
-            movies << current_node.info
-            current_node = current_node.right
-          elsif current_node == @root
-            movies << current_node.info
-          else
-            current_node = current_node.right
-            current_node = min_node_of(current_node)
-          end
-        end
-      end
-    end
+    min_node = min_node_of(@root)
+    movies << min_node.info
+    finder_node = Node.new(min_node.rating, 'This node finds other nodes')
+    next_node = next_node(finder_node, @root)
+    movies << next_node.info
+    require "pry"; binding.pry
     movies
   end
 
