@@ -5,7 +5,6 @@ class BinarySearchTree
 
   def initialize
     @root = nil
-    @sorted_movies = []
   end
 
   def set_node(new_node, current_node)
@@ -92,31 +91,21 @@ class BinarySearchTree
   end
 
   def sort
-    current_node = @root
-    until @sorted_movies.last == max_node_of(@root)
-      require "pry"; binding.pry
+    movies = []
+    tree = @root
+    until tree.left.nil?
+      smallest = min_node_of(tree)
+      parent = smallest.parent
+      movies << smallest.info
+      if smallest.right.nil?
+        parent.abandon
+        parent
+      else
+        parent.left = smallest.right
+        smallest = min_node_of(smallest.right)
+      end
+      movies << @root.info
     end
     movies
-  end
-
-  def down(current_node)
-    current_node = min_node_of(current_node)
-    add(current_node)
-    current_node
-  end
-
-  def leftup(current_node)
-    add(current_node.parent)
-    current_node = current_node.parent
-  end
-
-  def rightup(current_node)
-    2.times do
-      current_node = current_node.parent
-    end
-  end
-
-  def add(current_node)
-    @sorted_movies << current_node.info
   end
 end
