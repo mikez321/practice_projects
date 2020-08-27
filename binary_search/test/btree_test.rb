@@ -96,6 +96,24 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 1, initial_tree.depth(john)
   end
 
+  def test_it_knows_the_max_or_min_node_of_any_given_node
+    initial_tree = BinarySearchTree.new
+
+    initial_tree.insert(61, "Bill & Ted's Excellent Adventure")
+    initial_tree.insert(16, "Johnny English")
+    initial_tree.insert(92, "Sharknado 3")
+    initial_tree.insert(8, "Signs")
+
+    root = initial_tree.root
+    john = initial_tree.root.left
+    shark = initial_tree.root.right
+    signs = john.left
+
+    assert_equal signs, @tree.min_node_of(root)
+    assert_equal shark, @tree.max_node_of(root)
+    assert_equal signs, @tree.min_node_of(john)
+  end
+
   # Starting here all tests will use the setup and instance variables
   # At this point it is assumed we're using a tree with 4 nodes
 
@@ -132,6 +150,19 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal expected, @tree.min
   end
 
+  def test_it_can_reset_the_list_of_movies
+    @tree.sort
+
+    assert_instance_of Array, @tree.sorted_movies
+    assert_equal 4, @tree.sorted_movies.length
+
+    @tree.reset_sorted_movies
+
+    assert_equal 0, @tree.reset_sorted_movies.length
+  end
+
+  # This test works with the setup, but was done this way to add more layers
+  # of nodes to ensure proper functions
   def test_it_can_return_a_sorted_list_of_movies_in_the_tree
     movie_tree = BinarySearchTree.new
     movie_tree.insert(61, "Bill & Ted's Excellent Adventure")
