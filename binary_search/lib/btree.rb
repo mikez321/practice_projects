@@ -1,11 +1,12 @@
 require './lib/node'
 
 class BinarySearchTree
+  attr_reader :sorted_movies
   attr_accessor :root
 
   def initialize
     @root = nil
-    @movies = []
+    @sorted_movies = []
   end
 
   def set_node(new_node, current_node)
@@ -92,21 +93,22 @@ class BinarySearchTree
   end
 
   def sort
+    reset_sorted_movies
     tree = @root
-    sort_left(tree)
-    
-    @movies << @root.info
+    order_left(tree)
+
+    @sorted_movies << @root.info
 
     tree.left = tree.right
-    sort_left(tree)
-    @movies
+    order_left(tree)
+    @sorted_movies
   end
 
-  def sort_left(tree)
+  def order_left(tree)
     until tree.left.nil?
       smallest = min_node_of(tree)
       parent = smallest.parent
-      @movies << smallest.info
+      @sorted_movies << smallest.info
       if smallest.right.nil?
         parent.abandon
         parent
@@ -115,5 +117,9 @@ class BinarySearchTree
         smallest = min_node_of(smallest.right)
       end
     end
+  end
+
+  def reset_sorted_movies
+    @sorted_movies = []
   end
 end
