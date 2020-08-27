@@ -27,4 +27,8 @@ class Node
     node.parent = self
     @right = node
   end
+
+  def abandon
+    @left = nil
+  end
 end
