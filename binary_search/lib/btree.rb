@@ -93,23 +93,16 @@ class BinarySearchTree
 
   def sort
     tree = @root
-    until tree.left.nil?
-      smallest = min_node_of(tree)
-      parent = smallest.parent
-      @movies << smallest.info
-      if smallest.right.nil?
-        parent.abandon
-        parent
-      else
-        parent.left = smallest.right
-        smallest = min_node_of(smallest.right)
-      end
-    end
-
+    sort_left(tree)
+    
     @movies << @root.info
 
     tree.left = tree.right
+    sort_left(tree)
+    @movies
+  end
 
+  def sort_left(tree)
     until tree.left.nil?
       smallest = min_node_of(tree)
       parent = smallest.parent
@@ -122,6 +115,5 @@ class BinarySearchTree
         smallest = min_node_of(smallest.right)
       end
     end
-    @movies
   end
 end
