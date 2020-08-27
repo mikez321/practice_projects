@@ -5,6 +5,7 @@ class BinarySearchTree
 
   def initialize
     @root = nil
+    @movies = []
   end
 
   def set_node(new_node, current_node)
@@ -91,12 +92,11 @@ class BinarySearchTree
   end
 
   def sort
-    movies = []
     tree = @root
     until tree.left.nil?
       smallest = min_node_of(tree)
       parent = smallest.parent
-      movies << smallest.info
+      @movies << smallest.info
       if smallest.right.nil?
         parent.abandon
         parent
@@ -104,8 +104,24 @@ class BinarySearchTree
         parent.left = smallest.right
         smallest = min_node_of(smallest.right)
       end
-      movies << @root.info
     end
-    movies
+
+    @movies << @root.info
+
+    tree.left = tree.right
+
+    until tree.left.nil?
+      smallest = min_node_of(tree)
+      parent = smallest.parent
+      @movies << smallest.info
+      if smallest.right.nil?
+        parent.abandon
+        parent
+      else
+        parent.left = smallest.right
+        smallest = min_node_of(smallest.right)
+      end
+    end
+    @movies
   end
 end
