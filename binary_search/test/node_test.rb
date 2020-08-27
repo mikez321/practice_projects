@@ -59,4 +59,21 @@ class NodeTest < Minitest::Test
     assert_equal node1, node3.parent
     assert_equal node1, node2.parent
   end
+
+  def test_it_can_abandon_a_smaller_node
+    node1 = Node.new(90, "Gentleman Broncos")
+    node2 = Node.new(30, "A Detective Calls")
+    node3 = Node.new(91, "Sin City")
+
+    node1.left = node2
+    node1.right = node3
+
+    assert_equal node2, node1.left
+    assert_equal node3, node1.right
+
+    node1.abandon
+
+    assert_nil node1.left
+    assert_equal node3, node1.right
+  end
 end
