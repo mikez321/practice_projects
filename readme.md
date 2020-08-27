@@ -1,2 +1,2 @@
 # Practice Projects
-This repo only exists to hang onto the practice projects I'll be working on after finishing Turing.  I don't want to lose my coding skills, and this will be a great time to explore some other projects I didn't have time to do while in school.  Also, I bought myself an HHKB as a 'treat yo self' gift for graduation and it will help me get better at the weird layout.  Feel free to browse around!
+I created this repo as a single place to do practice projects and not end up with excessive repos in my GH.  Most of them are from Turing's extension projects, but I'll dabble in a few things as well.  This is really a place for me to keep up my coding skills, keep my brain doing something, and to practice using my new HHKB!

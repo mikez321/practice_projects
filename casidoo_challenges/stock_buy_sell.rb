@@ -11,18 +11,26 @@ require 'minitest/pride'
 # “buy on day 4, sell on day 7”
 
 def stock_buy_sell(prices)
+
+  "buy on day #{low_day(prices)}, sell on day #{high_day(prices)}"
+end
+
+def low_day(prices)
   low_day = 0
   low_price = prices.first
   prices.each_with_index do |price, index|
     price < low_price ? low_day = index + 1 : next
   end
+  low_day
+end
 
+def high_day(prices)
   high_day = 0
   high_price = prices.first
   prices.each_with_index do |price, index|
     price > high_price ? high_day = index + 1 : next
   end
-  "buy on day #{low_day}, sell on day #{high_day}"
+  high_day
 end
 
 class StockBuySellTest < Minitest::Test
