@@ -11,13 +11,19 @@ class CompleteMeTest < Minitest::Test
     assert_instance_of CompleteMe, @completion
   end
 
+  def test_it_starts_with_a_blank_root_node
+    assert_instance_of Node, @completion.root
+  end
+
   def test_it_can_add_words
+    skip
     @completion.insert('pizza')
 
     assert_equal 1, @completion.count
   end
 
   def test_it_can_suggest_completions
+    skip
     expected = ['pizza']
 
     assert_equal expected, completion.suggest('piz')
