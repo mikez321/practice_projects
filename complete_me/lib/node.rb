@@ -3,10 +3,14 @@ class Node
 
   def initialize(name)
     @name = name
-    @child
+    @child = nil
   end
 
   def child=(node)
     @child = node
+  end
+
+  def leaf?
+    @child.nil? ? true : false
   end
 end
