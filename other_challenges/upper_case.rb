@@ -8,8 +8,11 @@ require 'minitest/pride'
 
 def uppercase(word)
   word = word.split("")
-  word.each do |letter|
-    return letter if letter.capitalize == letter
+  if word.first.capitalize == word.first
+    return word.first
+  else
+    word.shift
+    uppercase(word.join(''))
   end
 end
 
