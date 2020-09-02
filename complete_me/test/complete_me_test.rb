@@ -16,7 +16,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_add_words
-    skip
     @completion.insert('pizza')
 
     assert_equal 1, @completion.count
