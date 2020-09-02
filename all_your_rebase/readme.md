@@ -1,0 +1,2 @@
+# Rebase Practice!
+During my time at Turing we mostly used a git merge workflow.  Towards the end of the program we were introduced to rebasing.  Today I used an interactive rebase to rewrite some annoying/sloppy looking git history.  It took some digging around and some trial and error (learning VIM commands again....) before I got it figured out.  So, here's a quick repo with some basic files so I can practice rebasing.
