@@ -2,3 +2,5 @@ Here's a text file!
 I'm going to add some lines of code to it.  I'm committing after every sentence.  That way I can do a quick interactive rebase before I get into the whole... branch rebase thing.
 
 Ok, I squashed all those commits into a single one using an interactive rebase.  Now I want to try making some changes and rebasing a branch before I merge it.  I'm currently on the main branch.
+
+And now to keep this dialogue going, I just made changes to the rebase branch.  These two branches are starting to get pretty diverged!
