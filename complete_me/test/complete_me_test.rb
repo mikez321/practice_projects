@@ -15,16 +15,23 @@ class CompleteMeTest < Minitest::Test
     assert_instance_of Node, @completion.root
   end
 
-  def test_it_can_add_words
-    @completion.insert('pizza')
+  def test_it_can_add_a_one_letter_word
+    @completion.insert('a')
 
     assert_equal 1, @completion.count
   end
 
-  def test_it_can_suggest_completions
-    skip
-    expected = ['pizza']
-
-    assert_equal expected, completion.suggest('piz')
-  end
+  # def test_it_can_add_words
+  #   @completion.insert('pizza')
+  #
+  #   assert_equal 1, @completion.count
+  # end
+  #
+  # def test_it_can_suggest_completions
+  #   @completion.insert('pizza')
+  #
+  #   expected = ['pizza']
+  #
+  #   assert_equal expected, @completion.suggest('piz')
+  # end
 end

@@ -1,24 +1,19 @@
 require './lib/node'
 
 class CompleteMe
-  attr_reader :root
+  attr_reader :root, :nodes
 
   def initialize
     @root = Node.new(" ")
-    @leaves = []
+    @nodes = []
   end
 
-  def insert(name)
-    new_node = Node.new(name)
-    @root.child = new_node
+  def insert(word)
+    new_node = Node.new(word)
+    @nodes << new_node
   end
 
   def count
-    if @root.child && @root.child.leaf?
-      @leaves << @root.child.leaf?
-      @leaves.count
-    else
-      0
-    end
+    @nodes.length
   end
 end
