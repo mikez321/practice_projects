@@ -8,3 +8,5 @@ And now to keep this dialogue going, I just made changes to the rebase branch.  
 Now, this is the rebase branch.  I just made some changes to the main branch, and this branch does not include those.  Likewise, the main branch doesn't have the text found in this rebase branch!  Oh noes!  What shall we do?
 
 Well, don't worry!  I'm going to rebase these two branches together!  I'll have to fix some merge conflicts, but my next move is to rebase to master, fix issues, and then merge it all back together and PR it!  Let's see how it goes!
+
+Success!  Lines 4 and 6 were done at the same time as lines 8 and 10, but in two different branches.  I was able to rebase, fix merge conflicts, and then interactive rebase to clean up commits, and then merge my PR!
