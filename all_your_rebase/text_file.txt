@@ -1,0 +1,2 @@
+Here's a text file!
+I'm going to add some lines of code to it.  I'm committing after every sentence.  That way I can do a quick interactive rebase before I get into the whole... branch rebase thing.
