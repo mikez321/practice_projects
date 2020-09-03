@@ -21,6 +21,12 @@ class CompleteMeTest < Minitest::Test
     assert_equal 1, @completion.count
   end
 
+  def test_it_can_add_two_letter_words
+    @completion.insert('ab')
+
+    assert_equal 1, @completion.count
+  end
+
   # def test_it_can_add_words
   #   @completion.insert('pizza')
   #
