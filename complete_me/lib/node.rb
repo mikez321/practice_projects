@@ -4,16 +4,16 @@ class Node
 
   def initialize(name)
     @name = name
-    @children = []
+    @children = {}
     @parent = nil
   end
 
   def add(node)
     node.parent = self
-    @children << node
+    @children[node.name] = node
   end
 
   def leaf?
-    @children.length.zero? ? true : false
+    @children.keys.length.zero? ? true : false
   end
 end

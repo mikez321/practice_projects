@@ -16,7 +16,7 @@ class NodeTest < Minitest::Test
 
     @node.add(node2)
 
-    assert_equal [node2], @node.children
+    assert_equal [node2], @node.children.values
   end
 
   def test_it_is_leaf_if_it_has_no_children
@@ -39,7 +39,7 @@ class NodeTest < Minitest::Test
 
     expected = [node2, node3, node4]
 
-    assert_equal expected, @node.children
+    assert_equal expected, @node.children.values
   end
 
   def test_it_knows_its_parent_node
