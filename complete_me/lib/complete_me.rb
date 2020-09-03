@@ -20,7 +20,11 @@ class CompleteMe
     end
   end
 
-  def count
-    @nodes.length
+  def count(current_node = @root)
+    count = 0
+    current_node.children.each do |node|
+      node.leaf? ? count += 1 : next
+    end
+    count
   end
 end

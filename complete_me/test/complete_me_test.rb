@@ -17,14 +17,16 @@ class CompleteMeTest < Minitest::Test
 
   def test_it_can_add_a_one_letter_word
     assert_equal 'added', @completion.insert('a')
-
-    # assert_equal 1, @completion.count
   end
 
   def test_it_can_add_two_letter_words
     assert_equal 'added', @completion.insert('ab')
+  end
 
-    # assert_equal 1, @completion.count
+  def test_it_knows_how_many_words_it_has
+    @completion.insert('a')
+
+    assert_equal 1, @completion.count
   end
 
   # def test_it_can_add_words
