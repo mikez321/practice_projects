@@ -33,12 +33,41 @@ class CompleteMeTest < Minitest::Test
     assert_equal 2, @completion.count
   end
 
-  # def test_it_can_add_words
-  #   @completion.insert('pizza')
-  #
-  #   assert_equal 1, @completion.count
-  # end
-  #
+  def test_it_can_add_a_new_child_to_an_existing_tree
+    @completion.insert('a')
+    @completion.insert('bee')
+
+    root = @completion.root
+
+    assert_equal 2, root.children.length
+
+    b = root.children['b']
+
+    assert_instance_of Node, b
+    assert_equal 'b', b.name
+    assert_equal 1, b.children.length
+    assert_equal ['be'], b.children.keys
+
+    @completion.insert('bae')
+
+    assert_equal 3, @completion.count
+
+    assert_equal 2, b.children.length
+    assert_equal ['be', 'ba'], b.children.keys
+
+    be = b.children['be']
+    ba = b.children['ba']
+
+    assert_equal 'bee', be.children['bee'].name
+    assert_equal 'bae', ba.children['bae'].name
+  end
+
+  def test_it_can_add_words
+    @completion.insert('pizza')
+
+    assert_equal 1, @completion.count
+  end
+  
   # def test_it_can_suggest_completions
   #   @completion.insert('pizza')
   #
