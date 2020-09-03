@@ -5,11 +5,13 @@ class CompleteMe
 
   def initialize
     @root = Node.new(" ")
+    @word_count = 0
   end
 
   def insert(word, current_node = @root)
     if word == ""
-      'added'
+      @word_count += 1
+      "added new word #{current_node.name}"
     else
       split_word = word.split('')
       new_name = (current_node.name + split_word.shift).delete(' ')
@@ -20,11 +22,7 @@ class CompleteMe
     end
   end
 
-  def count(current_node = @root)
-    count = 0
-    current_node.children.each do |node|
-      node.leaf? ? count += 1 : next
-    end
-    count
+  def count
+    @word_count
   end
 end
