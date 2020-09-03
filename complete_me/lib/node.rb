@@ -1,16 +1,16 @@
 class Node
-  attr_reader :name, :child
+  attr_reader :name, :children
 
   def initialize(name)
     @name = name
-    @child = nil
+    @children = []
   end
 
-  def child=(node)
-    @child = node
+  def add(node)
+    @children << node
   end
 
   def leaf?
-    @child.nil? ? true : false
+    @children.length.zero? ? true : false
   end
 end
