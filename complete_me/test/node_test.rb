@@ -41,4 +41,12 @@ class NodeTest < Minitest::Test
 
     assert_equal expected, @node.children
   end
+
+  def test_it_knows_its_parent_node
+    node2 = Node.new('brew')
+
+    @node.add(node2)
+
+    assert_equal @node, node2.parent
+  end
 end
