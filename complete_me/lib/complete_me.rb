@@ -10,16 +10,19 @@ class CompleteMe
 
   def insert(word, current_node = @root)
     if word == ""
+      #increase word count
+
       @word_count += 1
       "added new word #{current_node.name}"
     elsif
+      #move to next node matching tree
+
       current_node.children.keys.include?(word[0])
-      split_word = word.split('')
-      current_node = current_node.children[split_word[0]]
-      split_word.shift
-      new_word = split_word.join
-      insert(new_word, current_node)
+      move = move_node(word, current_node)
+      insert(move['word'], move['node'])
     else
+      # create a new node if it doesn't already exist
+      
       split_word = word.split('')
       new_name = (current_node.name + split_word.shift).delete(' ')
       new_node = Node.new(new_name)
@@ -33,22 +36,33 @@ class CompleteMe
     @word_count
   end
 
-  def suggest(string, current_node = @root)
-    if string == ""
+  def suggest(word, current_node = @root)
+    if word == ""
+      #return all words under final node
+
       current_node.all_words
     elsif
-      current_node.children.keys.include?(string[0])
-      split_string = string.split('')
-      next_node = current_node.children[split_string[0]]
-      split_string.shift
-      new_string = split_string.join
-      suggest(new_string, next_node)
+      #move to the next node matching the word
+
+      current_node.children.keys.include?(word[0])
+      move = move_node(word, current_node)
+      suggest(move['word'], move['node'])
     else
-      split_string = string.split('')
-      new_string = (current_node.name + split_string.shift).delete(' ')
-      next_node = current_node.children[new_string]
-      next_string = split_string.join
-      suggest(next_string, next_node)
+      #alter existing word to move to next word in the tree
+
+      split_word = word.split('')
+      new_word = (current_node.name + split_word.shift).delete(' ')
+      next_node = current_node.children[new_word]
+      next_word = split_word.join
+      suggest(next_word, next_node)
     end
+  end
+
+  def move_node(word, current_node)
+    split_word = word.split('')
+    next_node = current_node.children[split_word[0]]
+    split_word.shift
+    new_word = split_word.join
+    {"word" => new_word, "node" => next_node}
   end
 end
