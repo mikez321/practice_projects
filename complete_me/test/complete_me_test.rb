@@ -5,6 +5,7 @@ require 'minitest/pride'
 class CompleteMeTest < Minitest::Test
   def setup
     @completion = CompleteMe.new
+    @dictionary = File.read('/usr/share/dict/words')
   end
 
   def test_it_exists
@@ -68,15 +69,6 @@ class CompleteMeTest < Minitest::Test
     assert_equal 1, @completion.count
   end
 
-  def test_it_can_move_onto_a_new_node_in_the_tree
-    @completion.insert('jalapeno')
-
-    root = @completion.root
-    target_node = root.children.values.first
-
-    assert_equal target_node, @completion.move_node('jalapeno', root)['node']
-  end
-
   def test_it_can_suggest_completions
     @completion.insert('pizza')
 
@@ -86,20 +78,29 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_load_a_collection_of_words
-    dictionary = File.read('/usr/share/dict/words')
-
-    @completion.populate(dictionary)
+    @completion.populate(@dictionary)
 
     assert_equal 235886, @completion.count
   end
 
-  def test_it_can_suggest_multiple_words
-    dictionary = File.read('/usr/share/dict/words')
-
-    @completion.populate(dictionary)
-
-    expected = @completion.suggest('piz')
-
-    require "pry"; binding.pry
-  end
+  # def test_it_can_suggest_multiple_words
+  #   words = [
+  #     'eggplant',
+  #     'egg',
+  #     'elephant',
+  #     'escape',
+  #     'ever',
+  #     'even',
+  #     'evergreen',
+  #     'eve',
+  #     'fond',
+  #     'found',
+  #     'fern',
+  #     'fan'
+  #   ]
+  #
+  #   words = words.join("\n")
+  #
+  #   @completion.populate(words)
+  # end
 end
