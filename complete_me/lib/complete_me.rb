@@ -22,7 +22,7 @@ class CompleteMe
       insert(move['word'], move['node'])
     else
       # create a new node if it doesn't already exist
-      
+
       split_word = word.split('')
       new_name = (current_node.name + split_word.shift).delete(' ')
       new_node = Node.new(new_name)
@@ -64,5 +64,12 @@ class CompleteMe
     split_word.shift
     new_word = split_word.join
     {"word" => new_word, "node" => next_node}
+  end
+
+  def populate(source)
+    words = source.split("\n")
+    words.each do |word|
+      insert(word)
+    end
   end
 end

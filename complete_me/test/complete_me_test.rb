@@ -84,4 +84,22 @@ class CompleteMeTest < Minitest::Test
 
     assert_equal expected, @completion.suggest('piz')
   end
+
+  def test_it_can_load_a_collection_of_words
+    dictionary = File.read('/usr/share/dict/words')
+
+    @completion.populate(dictionary)
+
+    assert_equal 235886, @completion.count
+  end
+
+  def test_it_can_suggest_multiple_words
+    dictionary = File.read('/usr/share/dict/words')
+
+    @completion.populate(dictionary)
+
+    expected = @completion.suggest('piz')
+
+    require "pry"; binding.pry
+  end
 end
