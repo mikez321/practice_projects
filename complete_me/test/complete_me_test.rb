@@ -68,6 +68,15 @@ class CompleteMeTest < Minitest::Test
     assert_equal 1, @completion.count
   end
 
+  def test_it_can_move_onto_a_new_node_in_the_tree
+    @completion.insert('jalapeno')
+
+    root = @completion.root
+    target_node = root.children.values.first
+
+    assert_equal target_node, @completion.move_node('jalapeno', root)['node']
+  end
+
   def test_it_can_suggest_completions
     @completion.insert('pizza')
 
