@@ -32,4 +32,23 @@ class CompleteMe
   def count
     @word_count
   end
+
+  def suggest(string, current_node = @root)
+    if string == ""
+      current_node.all_words
+    elsif
+      current_node.children.keys.include?(string[0])
+      split_string = string.split('')
+      next_node = current_node.children[split_string[0]]
+      split_string.shift
+      new_string = split_string.join
+      suggest(new_string, next_node)
+    else
+      split_string = string.split('')
+      new_string = (current_node.name + split_string.shift).delete(' ')
+      next_node = current_node.children[new_string]
+      next_string = split_string.join
+      suggest(next_string, next_node)
+    end
+  end
 end

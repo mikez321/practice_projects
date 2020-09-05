@@ -67,12 +67,12 @@ class CompleteMeTest < Minitest::Test
 
     assert_equal 1, @completion.count
   end
-  
-  # def test_it_can_suggest_completions
-  #   @completion.insert('pizza')
-  #
-  #   expected = ['pizza']
-  #
-  #   assert_equal expected, @completion.suggest('piz')
-  # end
+
+  def test_it_can_suggest_completions
+    @completion.insert('pizza')
+
+    expected = ['pizza']
+
+    assert_equal expected, @completion.suggest('piz')
+  end
 end
