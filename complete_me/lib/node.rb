@@ -16,4 +16,15 @@ class Node
   def leaf?
     @children.keys.length.zero? ? true : false
   end
+
+  def all_words(leaf_words = [])
+    if leaf?
+      leaf_words << name
+    else
+      children.values.each do |node|
+        node.all_words(leaf_words)
+      end
+    end
+    leaf_words
+  end
 end

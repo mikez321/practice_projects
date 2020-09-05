@@ -49,4 +49,18 @@ class NodeTest < Minitest::Test
 
     assert_equal @node, node2.parent
   end
+
+  def test_it_knows_all_the_words_under_it
+    node1 = Node.new(' ')
+    node2 = Node.new('a')
+    node3 = Node.new('am')
+    node4 = Node.new('at')
+
+    node1.add(node2)
+    node2.add(node3)
+    node2.add(node4)
+
+    assert_equal ['am', 'at'], node1.all_words
+
+  end
 end
