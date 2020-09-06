@@ -56,6 +56,9 @@ class NodeTest < Minitest::Test
     node3 = Node.new('am')
     node4 = Node.new('at')
 
+    node3.word = true
+    node4.word = true
+
     node1.add(node2)
     node2.add(node3)
     node2.add(node4)
@@ -67,7 +70,7 @@ class NodeTest < Minitest::Test
     node1 = Node.new('th')
     node2 = Node.new('the')
 
-    node2.word
+    node2.word = true
 
     assert_equal false, node1.word?
     assert_equal true, node2.word?

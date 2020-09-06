@@ -1,6 +1,6 @@
 class Node
   attr_reader :name, :children
-  attr_accessor :parent
+  attr_accessor :parent, :word
 
   def initialize(name)
     @name = name
@@ -18,22 +18,18 @@ class Node
     @children.keys.length.zero? ? true : false
   end
 
-  def all_words(leaf_words = [])
-    if leaf?
-      leaf_words << name
+  def all_words(collected_words = [])
+    if word?
+      collected_words << name
     else
       children.values.each do |node|
-        node.all_words(leaf_words)
+        node.all_words(collected_words)
       end
     end
-    leaf_words
+    collected_words
   end
 
   def word?
     @word
-  end
-
-  def word
-    @word = true
   end
 end
