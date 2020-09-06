@@ -69,19 +69,19 @@ class CompleteMeTest < Minitest::Test
     assert_equal 1, @completion.count
   end
 
+  def test_it_can_load_a_collection_of_words
+    skip
+    @completion.populate(@dictionary)
+
+    assert_equal 235886, @completion.count
+  end
+
   def test_it_can_suggest_completions
     @completion.insert('pizza')
 
     expected = ['pizza']
 
     assert_equal expected, @completion.suggest('piz')
-  end
-
-  def test_it_can_load_a_collection_of_words
-    skip
-    @completion.populate(@dictionary)
-
-    assert_equal 235886, @completion.count
   end
 
   def test_it_can_suggest_multiple_words
@@ -104,6 +104,13 @@ class CompleteMeTest < Minitest::Test
     words = words.join("\n")
 
     @completion.populate(words)
-    require "pry"; binding.pry
+
+    e_words = ["eggplant", "egg", "elephant", "escape", "ever", "every", "even", "eve"]
+    f_words = ["fond", "found", "fern", "fan"]
+    egg_words = ["eggplant", "egg"]
+
+    assert_equal e_words, @completion.suggest('e')
+    assert_equal f_words, @completion.suggest('f')
+    assert_equal egg_words, @completion.suggest('egg')
   end
 end
