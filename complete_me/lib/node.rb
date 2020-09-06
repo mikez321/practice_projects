@@ -6,6 +6,7 @@ class Node
     @name = name
     @children = {}
     @parent = nil
+    @word = false
   end
 
   def add(node)
@@ -26,5 +27,13 @@ class Node
       end
     end
     leaf_words
+  end
+
+  def word?
+    @word
+  end
+
+  def word
+    @word = true
   end
 end

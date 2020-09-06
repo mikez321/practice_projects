@@ -61,6 +61,15 @@ class NodeTest < Minitest::Test
     node2.add(node4)
 
     assert_equal ['am', 'at'], node1.all_words
+  end
 
+  def test_it_knows_if_it_is_a_complete_word
+    node1 = Node.new('th')
+    node2 = Node.new('the')
+
+    node2.word
+
+    assert_equal false, node1.word?
+    assert_equal true, node2.word?
   end
 end
