@@ -86,18 +86,18 @@ class CompleteMeTest < Minitest::Test
 
   def test_it_can_suggest_multiple_words
     words = [
-      # 'eggplant',
-      # 'egg',
-      # 'elephant',
-      # 'escape',
+      'eggplant',
+      'egg',
+      'elephant',
+      'escape',
       'ever',
       'even',
       'every',
-      # 'eve',
-      # 'fond',
-      # 'found',
-      # 'fern',
-      # 'fan'
+      'eve',
+      'fond',
+      'found',
+      'fern',
+      'fan'
     ]
 
 
