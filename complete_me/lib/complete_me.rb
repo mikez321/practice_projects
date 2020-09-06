@@ -11,40 +11,73 @@ class CompleteMe
   def insert(word, current_node = @root, original_word = word)
     if current_node.word?
       new_node = Node.new(current_node.name)
+      new_node.word = true
       current_node.add(new_node)
-
-      split_word = word.split('')
-      new_name = (current_node.name + split_word.shift).delete(' ')
-      new_node = Node.new(new_name)
-      current_node.add(new_node)
-      new_word = split_word.join
-      insert(new_word, new_node, original_word)
+      current_node.word = false
     elsif
-      word == "" && !current_node.leaf?
-      new_node = Node.new(current_node.name)
-      current_node.add(new_node)
-      @word_count += 1
-      "added new word #{new_node.name}"
-    elsif
-      current_node.name == original_word && word == ""
-      current_node.word
-      @word_count += 1
-      "added new word #{current_node.name}"
+      word == ""
+      if current_node.leaf?
+        current_node.word = true
+        @word_count += 1
+        "added new word #{current_node.name}"
+      else
+        new_node = Node.new(current_node.name)
+        new_node.word = true
+        current_node.add(new_node)
+        @word_count += 1
+        "added new word #{current_node.name}"
+      end
     elsif
       current_node.children.keys.include?((current_node.name + word[0]).strip)
-      split_word = word.split('')
       current_node = current_node.children[(current_node.name + word[0]).strip]
-      split_word.shift
-      new_word = split_word.join
+      new_word = drop_first_letter(word)
       insert(new_word, current_node, original_word)
     else
       split_word = word.split('')
       new_name = (current_node.name + split_word.shift).delete(' ')
+      new_word = split_word.join
       new_node = Node.new(new_name)
       current_node.add(new_node)
-      new_word = split_word.join
       insert(new_word, new_node, original_word)
     end
+    # if current_node.word?
+    #   new_node = Node.new(current_node.name)
+    #   new_node.word
+    #   current_node.add(new_node)
+    #
+    #   split_word = word.split('')
+    #   new_name = (current_node.name + split_word.shift).delete(' ')
+    #   new_node = Node.new(new_name)
+    #   current_node.add(new_node)
+    #   new_word = split_word.join
+    #   insert(new_word, new_node, original_word)
+    # elsif
+    #   word == "" && !current_node.leaf?
+    #   new_node = Node.new(current_node.name)
+    #   new_node.word
+    #   current_node.add(new_node)
+    #   @word_count += 1
+    #   "added new word #{new_node.name}"
+    # elsif
+    #   current_node.name == original_word && word == ""
+    #   current_node.word
+    #   @word_count += 1
+    #   "added new word #{current_node.name}"
+    # elsif
+    #   current_node.children.keys.include?((current_node.name + word[0]).strip)
+    #   split_word = word.split('')
+    #   current_node = current_node.children[(current_node.name + word[0]).strip]
+    #   split_word.shift
+    #   new_word = split_word.join
+    #   insert(new_word, current_node, original_word)
+    # else
+    #   split_word = word.split('')
+    #   new_name = (current_node.name + split_word.shift).delete(' ')
+    #   new_node = Node.new(new_name)
+    #   current_node.add(new_node)
+    #   new_word = split_word.join
+    #   insert(new_word, new_node, original_word)
+    # end
   end
 
   def count
@@ -77,5 +110,11 @@ class CompleteMe
     words.each do |word|
       insert(word)
     end
+  end
+
+  def drop_first_letter(word)
+    split = word.split('')
+    split.shift
+    split.join('')
   end
 end
