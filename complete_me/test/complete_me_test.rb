@@ -78,29 +78,32 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_load_a_collection_of_words
+    skip
     @completion.populate(@dictionary)
 
     assert_equal 235886, @completion.count
   end
 
-  # def test_it_can_suggest_multiple_words
-  #   words = [
-  #     'eggplant',
-  #     'egg',
-  #     'elephant',
-  #     'escape',
-  #     'ever',
-  #     'even',
-  #     'evergreen',
-  #     'eve',
-  #     'fond',
-  #     'found',
-  #     'fern',
-  #     'fan'
-  #   ]
-  #
-  #   words = words.join("\n")
-  #
-  #   @completion.populate(words)
-  # end
+  def test_it_can_suggest_multiple_words
+    words = [
+      # 'eggplant',
+      # 'egg',
+      # 'elephant',
+      # 'escape',
+      'ever',
+      'even',
+      'every',
+      # 'eve',
+      # 'fond',
+      # 'found',
+      # 'fern',
+      # 'fan'
+    ]
+
+
+    words = words.join("\n")
+
+    @completion.populate(words)
+    require "pry"; binding.pry
+  end
 end
