@@ -49,8 +49,6 @@ class CompleteMe
 
   def suggest(string, current_node = @root)
     if string == ""
-      #return all words under final node
-
       current_node.all_words
     elsif
       current_node.children.keys.include?(string[0])
