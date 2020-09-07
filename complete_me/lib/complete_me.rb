@@ -54,10 +54,8 @@ class CompleteMe
       current_node.all_words
     elsif
       current_node.children.keys.include?(string[0])
-      split_string = string.split('')
-      next_node = current_node.children[split_string[0]]
-      split_string.shift
-      new_string = split_string.join
+      next_node = current_node.children[string[0]]
+      new_string = drop_first_letter(string)
       suggest(new_string, next_node)
     else
       split_string = string.split('')
