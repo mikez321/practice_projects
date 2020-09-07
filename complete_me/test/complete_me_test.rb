@@ -69,13 +69,6 @@ class CompleteMeTest < Minitest::Test
     assert_equal 1, @completion.count
   end
 
-  def test_it_can_load_a_collection_of_words
-    skip
-    @completion.populate(@dictionary)
-
-    assert_equal 235886, @completion.count
-  end
-
   def test_it_can_suggest_completions
     @completion.insert('pizza')
 
@@ -100,7 +93,6 @@ class CompleteMeTest < Minitest::Test
       'fan'
     ]
 
-
     words = words.join("\n")
 
     @completion.populate(words)
@@ -112,5 +104,30 @@ class CompleteMeTest < Minitest::Test
     assert_equal e_words, @completion.suggest('e')
     assert_equal f_words, @completion.suggest('f')
     assert_equal egg_words, @completion.suggest('egg')
+  end
+
+  def test_it_can_load_a_large_collection_of_words_and_make_multiple_suggestions
+    # This big test passes but takes some time.  For the sake of testing
+    # it is using a smaller dataset and the 'populate_mini' method.
+
+    # @completion.populate(@dictionary)
+
+    # assert_equal 235886, @completion.count
+    #
+    # expected = ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"]
+    #
+    # expected.each do |word|
+    #   assert_equal true, @completion.suggest('piz').include?(word)
+    # end
+
+    @completion.populate_mini(@dictionary)
+
+    assert_equal 1000, @completion.count
+
+    expected = ["abrupt", "abruptedly", "abruption", "abruptly", "abruptness"]
+
+    expected.each do |word|
+      assert_equal true, @completion.suggest('abru').include?(word)
+    end
   end
 end
