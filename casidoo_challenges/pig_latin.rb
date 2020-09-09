@@ -11,7 +11,7 @@ end
 def translate(phrase)
   phrase = phrase.split(' ')
   phrase.map do |word|
-    if word[0].match(/[A-Z]/) ? true : false
+    if word[0].match(/[A-Z]/)
       word = word.downcase
       pig_latinize(word).capitalize
     elsif
@@ -26,6 +26,10 @@ end
 class String
   def number?
     match(/\d/) ? true : false
+  end
+
+  def special_character?
+    match(/[^w]/) ? true : false
   end
 end
 
@@ -45,7 +49,24 @@ class PigLatinTest < Minitest::Test
     assert_equal false, 'pig'.number?
   end
 
+  def test_it_can_identify_special_characters
+    characters = ['.', '!', '$', '(']
+
+    characters.each do |character|
+      assert_equal true, character.special_character?
+    end
+  end
+
+  def test_it_will_fix_capitalization_errors_it_creates
+    assert_equal 'Ikemay', translate('Mike')
+  end
+
+  def test_it_can_handle_punctuation
+    assert_equal 'igspay!', translate('pigs!')
+  end
+
   def test_it_can_translate_whole_sentences_including_numbers_and_punctuation
+    skip
     phrase = "I would like 13 donuts please... a Baker's Dozen!"
     expected = "Iay ouldway ikelay 13 onutsday leasepay... aya aker'sBay ozenDay!"
 
