@@ -11,7 +11,7 @@ end
 def translate(phrase)
   phrase = phrase.split(' ')
   phrase.map do |word|
-    pig_latinize(word)
+    word.number? ? word : pig_latinize(word)
   end.join(' ')
 end
 
@@ -38,7 +38,6 @@ class PigLatinTest < Minitest::Test
   end
 
   def test_it_can_translate_whole_sentences_including_numbers_and_punctuation
-    skip
     phrase = "I would like 13 donuts please... a Baker's Dozen!"
     expected = "Iay ouldway ikelay 13 onutsday leasepay... aya aker'sBay ozenDay!"
 
