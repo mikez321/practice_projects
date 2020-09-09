@@ -11,7 +11,15 @@ end
 def translate(phrase)
   phrase = phrase.split(' ')
   phrase.map do |word|
-    word.number? ? word : pig_latinize(word)
+    if word[0].match(/[A-Z]/) ? true : false
+      word = word.downcase
+      pig_latinize(word).capitalize
+    elsif
+    word.number?
+      word
+    else
+      pig_latinize(word)
+    end
   end.join(' ')
 end
 
