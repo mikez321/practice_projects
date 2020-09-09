@@ -36,6 +36,10 @@ class String
   def special_character?
     match(/\W/) ? true : false
   end
+
+  def upper_case?
+    match(/[A-Z]/) ? true : false
+  end
 end
 
 class PigLatinTest < Minitest::Test
@@ -68,6 +72,11 @@ class PigLatinTest < Minitest::Test
     end
   end
 
+  def test_it_knows_if_a_word_is_capitalized
+    assert_equal true, 'Mike'.upper_case?
+    assert_equal false, 'lower'.upper_case?
+  end
+
   def test_it_will_fix_capitalization_errors_it_creates
     assert_equal 'Ikemay', translate('Mike')
   end
@@ -77,9 +86,8 @@ class PigLatinTest < Minitest::Test
   end
 
   def test_it_can_translate_whole_sentences_including_numbers_and_punctuation
-    skip
-    phrase = "I would like 13 donuts please... a Baker's Dozen!"
-    expected = "Iay ouldway ikelay 13 onutsday leasepay... aya aker'sBay ozenDay!"
+    phrase = "I would like 13 donuts please. A Baker's Dozen!"
+    expected = "Iay ouldway ikelay 13 onutsday leasepay. Aay Aker'sbay Ozenday!"
 
     assert_equal expected, translate(phrase)
   end
