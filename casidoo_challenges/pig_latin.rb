@@ -8,6 +8,13 @@ def pig_latinize(string)
   string.reverse.chop.reverse + latinize
 end
 
+def translate(phrase)
+  phrase = phrase.split(' ')
+  phrase.map do |word|
+    pig_latinize(word)
+  end.join(' ')
+end
+
 class PigLatinTest < Minitest::Test
 
   def test_it_can_turn_a_word_into_pig_latin
