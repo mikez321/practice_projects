@@ -4,7 +4,8 @@ require 'minitest/pride'
 # Write a function that converts a sentence into pig latin
 
 def pig_latinize(string)
-  
+  latinize = string[0] + 'ay'
+  string.reverse.chop.reverse + latinize
 end
 
 class PigLatinTest < Minitest::Test
@@ -13,5 +14,5 @@ class PigLatinTest < Minitest::Test
     assert_equal 'igpay', pig_latinize('pig')
     assert_equal 'atinlay', pig_latinize('latin')
   end
-
+  
 end
