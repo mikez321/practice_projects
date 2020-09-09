@@ -15,6 +15,12 @@ def translate(phrase)
   end.join(' ')
 end
 
+class String
+  def number?
+    match(/\d/) ? true : false
+  end
+end
+
 class PigLatinTest < Minitest::Test
 
   def test_it_can_turn_a_word_into_pig_latin
@@ -24,5 +30,18 @@ class PigLatinTest < Minitest::Test
 
   def test_it_can_translate_multiple_words
     assert_equal 'igpay atinlay', translate('pig latin')
+  end
+
+  def test_it_can_identify_a_number
+    assert_equal true, '13'.number?
+    assert_equal false, 'pig'.number?
+  end
+
+  def test_it_can_translate_whole_sentences_including_numbers_and_punctuation
+    skip
+    phrase = "I would like 13 donuts please... a Baker's Dozen!"
+    expected = "Iay ouldway ikelay 13 onutsday leasepay... aya aker'sBay ozenDay!"
+
+    assert_equal expected, translate(phrase)
   end
 end
