@@ -15,6 +15,11 @@ def translate(phrase)
       word = word.downcase
       pig_latinize(word).capitalize
     elsif
+      word[-1].special_character?
+      punctuation = word[-1]
+      word = word[0..-2]
+      pig_latinize(word) + punctuation
+    elsif
     word.number?
       word
     else
@@ -29,7 +34,7 @@ class String
   end
 
   def special_character?
-    match(/[^w]/) ? true : false
+    match(/\W/) ? true : false
   end
 end
 
@@ -54,6 +59,12 @@ class PigLatinTest < Minitest::Test
 
     characters.each do |character|
       assert_equal true, character.special_character?
+    end
+
+    not_special = ['a', '1', 'Z']
+
+    not_special.each do |character|
+      assert_equal false, character.special_character?
     end
   end
 
