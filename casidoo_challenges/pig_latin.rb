@@ -8,20 +8,26 @@ def pig_latinize(string)
   string.reverse.chop.reverse + latinize
 end
 
+def collect_punctuation(string)
+  punctuation = []
+  until !string[-1].special_character?
+    punctuation << string[-1]
+    string = string[0..-2]
+  end
+  punctuation.join('')
+end
+
 def translate(phrase)
   phrase = phrase.split(' ')
   phrase.map do |word|
     if word.upper_case? && word[-1].special_character?
       punctuation = word[-1]
-      word = word[0..-2].downcase
-      pig_latinize(word).capitalize + punctuation
+      pig_latinize(word[0..-2].downcase).capitalize + punctuation
     elsif word.upper_case?
-      word = word.downcase
-      pig_latinize(word).capitalize
+      pig_latinize(word.downcase).capitalize
     elsif word[-1].special_character?
       punctuation = word[-1]
-      word = word[0..-2]
-      pig_latinize(word) + punctuation
+      pig_latinize(word[0..-2]) + punctuation
     elsif word.number?
       word
     else
@@ -85,6 +91,12 @@ class PigLatinTest < Minitest::Test
 
   def test_it_can_handle_punctuation
     assert_equal 'igspay!', translate('pigs!')
+  end
+
+  def test_it_can_collect_mulitple_punctuations
+    word = 'test!!!'
+
+    assert_equal '!!!', collect_punctuation(word)
   end
 
   def test_it_can_translate_whole_sentences_including_numbers_and_punctuation
