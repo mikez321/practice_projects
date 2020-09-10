@@ -8,26 +8,28 @@ def pig_latinize(string)
   string.reverse.chop.reverse + latinize
 end
 
-def collect_punctuation(string)
+def collect_punctuation(word)
   punctuation = []
-  until !string[-1].special_character?
-    punctuation << string[-1]
-    string = string[0..-2]
+  until !word[-1].special_character?
+    punctuation << word[-1]
+    word = word[0..-2]
   end
-  punctuation.join('')
+  {'word' => word, 'punctuation' => punctuation.join('')}
 end
 
 def translate(phrase)
   phrase = phrase.split(' ')
   phrase.map do |word|
     if word.upper_case? && word[-1].special_character?
-      punctuation = word[-1]
-      pig_latinize(word[0..-2].downcase).capitalize + punctuation
+      punctuation = collect_punctuation(word)['punctuation']
+      word = collect_punctuation(word)['word']
+      pig_latinize(word.downcase).capitalize + punctuation
     elsif word.upper_case?
       pig_latinize(word.downcase).capitalize
     elsif word[-1].special_character?
-      punctuation = word[-1]
-      pig_latinize(word[0..-2]) + punctuation
+      punctuation = collect_punctuation(word)['punctuation']
+      word = collect_punctuation(word)['word']
+      pig_latinize(word) + punctuation
     elsif word.number?
       word
     else
@@ -96,12 +98,13 @@ class PigLatinTest < Minitest::Test
   def test_it_can_collect_mulitple_punctuations
     word = 'test!!!'
 
-    assert_equal '!!!', collect_punctuation(word)
+    assert_equal 'test', collect_punctuation(word)['word']
+    assert_equal '!!!', collect_punctuation(word)['punctuation']
   end
 
   def test_it_can_translate_whole_sentences_including_numbers_and_punctuation
-    phrase = "I would like 13 donuts please. A Baker's Dozen!"
-    expected = "Iay ouldway ikelay 13 onutsday leasepay. Aay Aker'sbay Ozenday!"
+    phrase = "I would like 13 donuts please... A Baker's Dozen!"
+    expected = "Iay ouldway ikelay 13 onutsday leasepay... Aay Aker'sbay Ozenday!"
 
     assert_equal expected, translate(phrase)
   end
