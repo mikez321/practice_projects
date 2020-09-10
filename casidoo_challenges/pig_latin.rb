@@ -11,16 +11,18 @@ end
 def translate(phrase)
   phrase = phrase.split(' ')
   phrase.map do |word|
-    if word.upper_case?
+    if word.upper_case? && word[-1].special_character?
+      punctuation = word[-1]
+      word = word[0..-2].downcase
+      pig_latinize(word).capitalize + punctuation
+    elsif word.upper_case?
       word = word.downcase
       pig_latinize(word).capitalize
-    elsif
-      word[-1].special_character?
+    elsif word[-1].special_character?
       punctuation = word[-1]
       word = word[0..-2]
       pig_latinize(word) + punctuation
-    elsif
-    word.number?
+    elsif word.number?
       word
     else
       pig_latinize(word)
