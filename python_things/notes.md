@@ -21,3 +21,17 @@ __Python is a 'strongly typed' language__
 What does that even mean???
 
 In this example we try to concatenate a string and an int.  It generates an error saying it can't do that.  _Oh, and one nice thing here... it has a semi useful error message with a line number and everything!_
+
+### Python Types:
+Numeric:
+* The 3 kinds are: int, float, complex
+* Integers = int
+* This is all the same as Ruby with int and float
+* There's basically no limit to how big ints can be
+* Floats work the same
+* They can have 308 places to the right of a decimal
+* There is a 'decimal' data type but that's not covered in the course
+
+__A bit of vocab now: Expression__
+
+An expression is anything that can be calculated to return a value.  Probably pretty stright forward, but I am not used to hearing that term soooo.... there  ya go.
