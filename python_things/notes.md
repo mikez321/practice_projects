@@ -65,3 +65,13 @@ stuff = ['computer', 'monitor', 'mouse']
 stuff[0] => 'computer'
 
 stuff[0][0] => 'c'
+
+### Fun to know!
+Any data type can be 'coerced' into a string in Python!
+
+### Replacement Fields
+This is called 'String Interpolation' in Ruby.  It is done with curly braces and a number, and then `.format(num1, num2, num3 ....)`
+
+These numbers don't have to be in order in the string.... just as long as they are referenced properly.
+
+`"Jan: {1}, Feb: {0}, Mar: {1}, Apr: {2}".format(28, 31, 30)`
