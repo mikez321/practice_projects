@@ -75,3 +75,24 @@ This is called 'String Interpolation' in Ruby.  It is done with curly braces and
 These numbers don't have to be in order in the string.... just as long as they are referenced properly.
 
 `"Jan: {1}, Feb: {0}, Mar: {1}, Apr: {2}".format(28, 31, 30)`
+
+### F Strings
+F Strings are a little newer of a feature and really get close to Ruby string interpolation.  Instead of using `.format("whatever")` you would do something like this:
+```
+word = "whatever"
+
+print(f"Tim's age is {word}".)
+=> Tim's age is whatever.
+```
+
+Basically you prepend an 'f' before the double quotes
+
+And you can put whatever you want in the curly braces.  You can totally do something like:
+```
+num1 = 3
+num2 = 1
+
+print(f"The sum of {num1} and {num2} is {num1 + num2}.")
+
+=> The sum of 3 and 1 is 4.
+```
