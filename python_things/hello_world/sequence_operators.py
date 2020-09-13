@@ -1,3 +1,4 @@
+"""More string manipulation from Udemy Python course."""
 string1 = "he's "
 string2 = "probably "
 string3 = "pinig "
