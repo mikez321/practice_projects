@@ -35,3 +35,33 @@ Numeric:
 __A bit of vocab now: Expression__
 
 An expression is anything that can be calculated to return a value.  Probably pretty stright forward, but I am not used to hearing that term soooo.... there  ya go.
+
+__Slicing Strings__
+`[start:end]`
+
+Slicing will cut a word up through a range... start:end.  It __does not__ include the last number!  "Up to but not including"
+
+__Python Idioms__
+
+To reverse a string: `[::-1]`
+
+To print the last character of a sequence: `[-1:]`
+
+To print the last n characters of a sequence: `[-n:]`
+
+To print the first n characters of a sequence: `[:n]`
+
+To print the first in a string:
+`[:1]` or `[0]`
+
+### Sequences:
+
+What is a sequence?
+
+An __ordered__ set of items.... Strings are sequences, and so are arrays
+
+stuff = ['computer', 'monitor', 'mouse']
+
+stuff[0] => 'computer'
+
+stuff[0][0] => 'c'
