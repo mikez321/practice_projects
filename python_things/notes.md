@@ -96,3 +96,12 @@ print(f"The sum of {num1} and {num2} is {num1 + num2}.")
 
 => The sum of 3 and 1 is 4.
 ```
+
+## Onto Python Programming!
+Now that we've gone through how to manipulate things and do data calculations, lets look at programming in Python...
+
+Python uses indentation to define blocks of code
+
+Convention is to indent 4 spaces per block
+
+To start a code block you'll always have a : and then the line below will be indented.
