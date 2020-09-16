@@ -135,3 +135,13 @@ I think this has been covered already, but it just checks to see if something is
 
 ### A bit of reference:
 Check out methods at [Python Docs](https://docs.python.org)
+
+### For Loops
+This is like an each loop in Ruby.
+
+```
+for VARIABLE in THING:
+  do something until the THING has nothing else to do something with
+```
+
+When using for loops and ranges, remember that ranges go from the first number, up to BUT NOT INCLUDING the last number in the range (just like string slice).
