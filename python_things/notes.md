@@ -105,3 +105,33 @@ Python uses indentation to define blocks of code
 Convention is to indent 4 spaces per block
 
 To start a code block you'll always have a : and then the line below will be indented.
+
+### Booleans!
+True and False (Yep, I knew that!)
+True and False will always be capitalized.  I also came across None, which is also capitalized.
+
+Precedence of booleans.... I covered this back in Mod1, but let's go over it again.
+```
+Precedence of boolean
+()
+if/else
+or
+and
+not
+>,<, >=, <=, !=, ==
+```
+
+So, there are 'bitwise' and/or represented by & and |, but these don't seem to work right in my code.  Just stick with words unlike Ruby here.
+
+### Truthy
+This seems like it might be a little bit different than Ruby....
+
+* None and False == False
+* 0 of any numeric type (int, float, fraction, etc) == False
+* Empty strings == False
+
+### In and Not In
+I think this has been covered already, but it just checks to see if something is contained in a string.  It can be whole words or just letters or whatever (for strings).  `not in` is the opposite of `in`.
+
+### A bit of reference:
+Check out methods at [Python Docs](https://docs.python.org)
