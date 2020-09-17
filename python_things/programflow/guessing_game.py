@@ -1,11 +1,12 @@
 """A number guessing game."""
 from random import randint
 
-answer = randint(1, 10)
+top = 25
+answer = randint(1, top)
 guess = None
 
+print(f"Guess a number between 1 and {top}!")
 while answer != guess:
-    print("Guess a number between 1 and 10!")
     guess = int(input())
     if guess > answer:
         print("Too high")
