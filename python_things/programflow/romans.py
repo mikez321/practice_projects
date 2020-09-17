@@ -12,7 +12,7 @@ and Public Health, what have the Romans ever done for us?
 uppercase = []
 
 for char in quote:
-    if char.isalpha() and char.upper() == char:
+    if char.isalpha() and char.isupper():
         uppercase.append(char)
 
 print("".join(uppercase))
