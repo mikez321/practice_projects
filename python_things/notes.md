@@ -145,3 +145,73 @@ for VARIABLE in THING:
 ```
 
 When using for loops and ranges, remember that ranges go from the first number, up to BUT NOT INCLUDING the last number in the range (just like string slice).
+
+### Continue and Break
+`continue` works like `next` in ruby where if a condition is true it is skipped.
+
+`break` works like `return` in ruby where the method stops running where its at.
+
+### Heads up!
+Guard clauses are a thing in Python just like they are in Ruby.
+
+```
+for index in range(len(shopping_list)):
+    if shopping_list[index] == item_to_find:
+        found_at = index
+        break
+```
+
+This can also be written as:
+```
+if item_to_find in shopping_list:
+  found_at = shopping_list.index(item_to_find)
+  break
+```
+
+### Pass Statement
+If you put `pass` in a code block, it will run, just not do anything
+
+In Python, you can't have blanks inside flow control statements, but pass will work.
+
+### Augmented Assignment
+"The combination in a single statement of a binary operation and an assignment statement."
+
+This means `guesses = guesses + 1` == `guesses += 1`
+
+In Python augmented assignment is faster than assigning and then adding
+
+### Style in Python Code
+PEP8 is the Python style guide.
+
+"Python Enhancement Proposal"
+
+There might be unique style guides for your own projects, so be aware.  __DO NOT__ just change things because it follows the style guide.  Stick to what your application is written with so you don't introduce problems into the code.
+
+Your IDE might tab differently so be careful with spaces and tabs when indenting
+
+Line lengths should be limited to 72 characters.
+
+_Naming Conventions_
+* Functions and Variables should be written in lower_snake_case
+* Classes should be named in UpperCamelCase
+* Always use `self` as the first arg for instance methods
+* Always use `cls` as the first arg for class methods
+
+### Else in a Loop
+Else can run with a FOR loop is kinda weird.  It goes with the same indentation as the for part, and is just code that runs at the end of the for loop.
+
+```
+for number in numbers:
+    if number % 8 == 0:
+        # reject the list
+        print("The numbers are unacceptable")
+        break
+else:
+    print("All those numbers are fine")
+```
+
+In this code, if any of the numbers are divisible by 8 it will reject the list and the loop will break.  If none of that code breaks, the for loop will terminate by running what's in the else block.
+
+To make it seem a little more straightforward... else in a for or while loop could have simply been called something like `completed` or `loop_end` since it will run that if a loop successfully ends or completes.
+
+You don't need to use else in for and while loops but it can be handy sometimes.
