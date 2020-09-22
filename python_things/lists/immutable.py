@@ -22,6 +22,8 @@ print(id(another_result))
 
 result += 'ish'
 print(id(result))
+print(result)
+print(another_result)
 # Again, this new result has a different ID than the first one.  Strings are
 # also immutable objects so Python has created a new object called 'result' and
 # this new object is the result of the code result += 'ish'
