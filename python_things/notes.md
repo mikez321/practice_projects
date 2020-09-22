@@ -215,3 +215,32 @@ In this code, if any of the numbers are divisible by 8 it will reject the list a
 To make it seem a little more straightforward... else in a for or while loop could have simply been called something like `completed` or `loop_end` since it will run that if a loop successfully ends or completes.
 
 You don't need to use else in for and while loops but it can be handy sometimes.
+
+### Sequence Types:
+What is a sequence type?
+```
+lists, tuples, and range objects are sequences
+A sequence is an ordered collection of items
+If a sequence wasn't ordered you couldn't refer to their items by an index position
+
+If you iterate over a sequence you'll always get the results in the same order
+
+Anything you can use in a for loop is an iterable.
+```
+
+### Lists:
+You can slice lists and look at their content just like you can with a string because strings and lists are both sequences.
+
+BUT, strings are _immutable_ where as lists are _mutable_.
+
+When an object is immutable that means it cannot be changed.  The following are immutable types built into Python:
+
+* int
+* float
+* bool
+* str
+* tuple
+* frozenset
+* bytes
+
+A 5 will always be a 5.  You can do arithmetic to it, but a 5 will always be a 5.
