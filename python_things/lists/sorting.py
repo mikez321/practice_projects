@@ -13,5 +13,14 @@ print(numbers)
 names = ['Max', 'Abagail', 'Zeb']
 print(sorted(names))
 
-missing_letter = sorted('The quick brown fox jumped over the lazy dog')
+missing_letter = sorted('The quick brown fox jumped over the lazy dog',
+                        key=str.casefold)
 print(missing_letter)
+
+case_names = ["Graham",
+              "John",
+              'terry',
+              'Michael',
+              'Terry',
+              'eric']
+print(sorted(case_names, key=str.casefold))
