@@ -244,3 +244,8 @@ When an object is immutable that means it cannot be changed.  The following are 
 * bytes
 
 A 5 will always be a 5.  You can do arithmetic to it, but a 5 will always be a 5.
+
+### Method Vs. Function
+When you call a function you just type in the name of the function and any args it might need.  `len('hello')` is an example of a function.
+
+You call a method on an object.  You'll specify an object that you want to run a function on.  `list = ['hello']` gives you an object called list.  Then you can do something like call the append method to list.  `list.append('world')`
