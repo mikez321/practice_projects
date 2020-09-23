@@ -249,3 +249,15 @@ A 5 will always be a 5.  You can do arithmetic to it, but a 5 will always be a 5
 When you call a function you just type in the name of the function and any args it might need.  `len('hello')` is an example of a function.
 
 You call a method on an object.  You'll specify an object that you want to run a function on.  `list = ['hello']` gives you an object called list.  Then you can do something like call the append method to list.  `list.append('world')`
+
+
+### Enumerate function:
+The enumerate() function returns each item in a list with its index number
+
+### Tricky here... sorted() or .sort()
+They both can both sort lists (or strings or ints or floats etc)... but be careful! `.sort()` returns `None` where `sorted()` returns a sorted version of that list.
+
+Oh, and one more bit on this.  sorted() will __create a new list__ from your existing list and return it.  You will still be able to access your original list.  .sort() will mutate your current list, and then return `None`.  __Instead of creating a new, sorted list, your list has been mutated into a sorted list.__
+
+### If you want to sort case insensitive:
+You can use a 2nd argument to the sorted() function.  Just add `, key=str.casefold` as a 2nd arg.
