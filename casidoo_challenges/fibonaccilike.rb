@@ -9,18 +9,44 @@ require 'minitest/pride'
 # 3 // these sequences: [1,11,12], [3,11,14] or [7,11,18]
 
 def fibonacci_like(numbers, sequence = [])
-  number = numbers.shift
-  numbers.each do |fib|
-    if numbers.include?(number + fib)
-      return [number, fib, (number + fib)]
-    else
-      0
+  return sequence.length if numbers.length.zero?
+  start = numbers.shift
+  numbers.each do |num|
+    if numbers.include?(next_number(start, num))
+      new_sequence = [start, num, next_number(start, num)]
+      until !numbers.include?(next_number(new_sequence[-2], new_sequence[-1]))
+        new_sequence << next_number(new_sequence[-2], new_sequence[-1])
+      end
+    end
+    if new_sequence && new_sequence.length > sequence.length
+      sequence = new_sequence
     end
   end
+  fibonacci_like(numbers, sequence)
+end
+
+def next_number(num1, num2)
+  num1 + num2
 end
 
 class FibLikeTest < Minitest::Test
   def test_it_can_identify_fib_like_numbers
-    assert_equal [1,11,12], fibonacci_like([1,3,7,11,12,14,18])
+    assert_equal 3, fibonacci_like([1,3,7,11,12,14,18])
+  end
+
+  def test_if_no_fib_like_sequence_it_returns_zero
+    assert_equal 0, fibonacci_like([1,3,7,9,11,30])
+  end
+
+  def test_it_can_return_the_longest_fib_like_sequence
+    assert_equal 6, fibonacci_like([1,3,4,8,11,12,14,15,17,18,20,38,58,96,154])
+  end
+
+  def test_it_knows_the_next_fib_like_number
+    assert_equal 2, next_number(1, 1)
+    assert_equal 3, next_number(1, 2)
+    assert_equal 5, next_number(2, 3)
+    assert_equal 8, next_number(3, 5)
+    assert_equal 13, next_number(5, 8)
   end
 end
