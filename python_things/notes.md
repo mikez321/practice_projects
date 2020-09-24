@@ -261,3 +261,25 @@ Oh, and one more bit on this.  sorted() will __create a new list__ from your exi
 
 ### If you want to sort case insensitive:
 You can use a 2nd argument to the sorted() function.  Just add `, key=str.casefold` as a 2nd arg.
+
+### Style guide for nested lists:
+Multi line lists can be broken up as such with the closing bracket in line with the items.
+```
+my_list = [
+    1, 2, 3,
+    4, 5, 6,
+    ]
+```
+
+Or the closing bracket can line up on space zero... like this:
+```
+my_list = [
+    1, 2, 3,
+    4, 5, 6,
+]
+```
+Both are acceptable.
+_Also of note... the lists can end with a comma, and Python will just ignore it.  It might make things a little easier in the future._
+
+### Interesting thing about print()
+The first argument of `print()` is `*Object`.  `*Object` means it can take as many args to print as you would like.  They will be separated by a comma.  I think in Ruby this was called 'splat operator'.
