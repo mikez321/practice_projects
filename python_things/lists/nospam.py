@@ -19,12 +19,20 @@ menu = [
 #     print(meal)
 
 # create new meals omitting spam
-spamless_menu = []
-for meal in menu:
-    spamless_meal = []
-    for item in meal:
-        if item != 'spam':
-            spamless_meal.append(item)
-    spamless_menu.append(spamless_meal)
+# spamless_menu = []
+# for meal in menu:
+#     spamless_meal = []
+#     for item in meal:
+#         if item != 'spam':
+#             spamless_meal.append(item)
+#     spamless_menu.append(spamless_meal)
+#
+# print(spamless_menu)
 
-print(spamless_menu)
+# lets make this look nicer with a join
+for meal in menu:
+    meal_index = len(meal) - 1
+    for index, item in enumerate(reversed(meal)):
+        if item == 'spam':
+            del meal[meal_index - index]
+    print(", ".join(meal))
