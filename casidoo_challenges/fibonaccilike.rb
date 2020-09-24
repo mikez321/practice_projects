@@ -8,21 +8,19 @@ require 'minitest/pride'
 # fibonacciLike([1,3,7,11,12,14,18])
 # 3 // these sequences: [1,11,12], [3,11,14] or [7,11,18]
 
-def fibonacci_like(numbers, sequence = [])
-  return sequence.length if numbers.length.zero?
+def fibonacci_like(numbers, longest = [])
+  return longest.length if numbers.length.zero?
   start = numbers.shift
   numbers.each do |num|
     if numbers.include?(next_number(start, num))
-      new_sequence = [start, num, next_number(start, num)]
-      until !numbers.include?(next_number(new_sequence[-2], new_sequence[-1]))
-        new_sequence << next_number(new_sequence[-2], new_sequence[-1])
+      sequence = [start, num, next_number(start, num)]
+      until !numbers.include?(next_number sequence[-2], sequence[-1])
+        sequence << next_number(sequence[-2], sequence[-1])
       end
     end
-    if new_sequence && new_sequence.length > sequence.length
-      sequence = new_sequence
-    end
+    longest = sequence  if sequence && sequence.length > longest.length
   end
-  fibonacci_like(numbers, sequence)
+  fibonacci_like(numbers, longest)
 end
 
 def next_number(num1, num2)
