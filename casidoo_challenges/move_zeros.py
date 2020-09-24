@@ -6,15 +6,12 @@
 # [1, 2, 1, 3, 6, 0, 0, 0]
 
 
-def move_zeros(numbers_list, zeros=[], indexes=[]):
+def move_zeros(numbers_list, zeros=[]):
     """Rearrange the list and move zeros to the end."""
-    for index, num in enumerate(numbers_list):
-        if num == 0:
+    for index in range(len(numbers_list) - 1, -1, -1):
+        if numbers_list[index] == 0:
             zeros.append(0)
-            indexes.append(index)
-    indexes.reverse()
-    for index in indexes:
-        del numbers_list[index]
+            del numbers_list[index]
     return numbers_list + zeros
 
 
