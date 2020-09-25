@@ -16,14 +16,15 @@
 # $ [] // The 10 and -10 collide and they both explode.
 
 
-def asteroids(rocks):
+def asteroids(rocks, remaining_rocks=[]):
     """Determine which rocks survive and which ones explode."""
     rock_1, rock_2 = rocks[-2:]
     del rocks[-2:]
     if collide(rock_1, rock_2):
-        return battle(rock_1, rock_2)
+        remaining_rocks.append(battle(rock_1, rock_2))
     else:
-        return [rock_1, rock_2]
+        remaining_rocks.append([rock_1, rock_2])
+    return flatten(remaining_rocks)
 
 
 def battle(rock_1, rock_2):
@@ -39,6 +40,16 @@ def battle(rock_1, rock_2):
 def collide(rock_1, rock_2):
     """Determine if rocks are moving in opposing directions."""
     return rock_1 // abs(rock_1) != rock_2 // abs(rock_2)
+
+
+def flatten(nested_list):
+    """Flatten a nested list."""
+    flat_list = []
+    for rocks in nested_list:
+        for rock in rocks:
+            flat_list.append(rock)
+    return flat_list
+
 
 
 if asteroids([10, -10]) == []:
