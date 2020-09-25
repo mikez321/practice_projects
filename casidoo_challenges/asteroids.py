@@ -51,3 +51,8 @@ if asteroids([10, -10]) == []:
     print("you got the first part")
 else:
     print("still need to fix the first part")
+
+if asteroids([5, 8, -5]) == [5, 8]:
+    print("you got the second part")
+else:
+    print("still need to fix the second part")
