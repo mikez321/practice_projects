@@ -18,15 +18,17 @@
 
 def asteroids(rocks, safe=[]):
     """Produce outcome of all collissions."""
-    pair = rocks[:2]
-    if will_fight(pair):
-        if fight_result(pair) is not None:
-            safe.append(fight_result(pair))
-        del rocks[:2]
-    else:
-        safe.append(pair[0])
-        del rocks[0]
-    return(safe)
+    if len(rocks) != 0:
+        pair = rocks[:2]
+        if will_fight(pair):
+            if fight_result(pair) is not None:
+                safe.append(fight_result(pair))
+            del rocks[:2]
+        else:
+            safe.append(pair[0])
+            del rocks[0]
+        asteroids(rocks, safe)
+    return safe
 
 
 def will_fight(pair):
@@ -46,7 +48,8 @@ def fight_result(pair):
         return r2
 
 
-# asteroids([10, -10])
+# print(asteroids([10, -10]))
+# print(asteroids([5, 8, -5]))
 if asteroids([10, -10]) == []:
     print("you got the first part")
 else:
