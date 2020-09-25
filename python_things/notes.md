@@ -283,3 +283,39 @@ _Also of note... the lists can end with a comma, and Python will just ignore it.
 
 ### Interesting thing about print()
 The first argument of `print()` is `*Object`.  `*Object` means it can take as many args to print as you would like.  They will be separated by a comma.  I think in Ruby this was called 'splat operator'.
+
+### Tuples
+Tuples are like lists, but they are immutable.  Tuples are ordered lists. They also share the same methods as lists.
+
+Visually, tuples are encased in `()`, not `[]`.  A tuple can be created by code similar to the following:
+```
+t = 'a', 'b', 'c'
+# or t = ('a', 'b', 'c')
+
+print(t)
+
+=> ('a', 'b', 'c')
+```
+
+The parenthesis while declaring a tuple aren't required, but maybe just go ahead and alway use them
+
+__Tuples must be encased in parenthesis when they are being passed as an arg in a function/method.__
+
+```
+name = 'Mike'
+keyboard = 'HHKB'
+
+print(name, 20, keyboard, 99)
+
+# the above != below!
+
+print((name, 20, keyboard, 99))
+```
+
+You can access indexes just like in a list using square brackets.  But remember that tuples are immutable, so you can't reassign at an index value.
+
+Because tuples are immutable they don't carry all the extra overhead and methods of lists and take up less memory.  Also, if you don't want your data to change you could store it in a tuple.
+
+Because tuples are immutable, you can _always_ successfully unpack a tuple, where as a list, you could potentially run into issues.
+
+And one last bit about unpacking tuples... if you're writing code and need to reference things in a tuple (or list) and find yourself referencing a lot of index positions you can just unpack the tuple or list into variables and it might make things easier for you in the future.
