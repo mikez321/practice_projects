@@ -22,14 +22,11 @@ def asteroids(rocks, safe=[]):
     if will_fight(pair):
         if fight_result(pair) is not None:
             safe.append(fight_result(pair))
-        # print(safe)
+        del rocks[:2]
     else:
         safe.append(pair[0])
         del rocks[0]
-
-    print(safe)
-    print(rocks)
-    # return(safe)
+    return(safe)
 
 
 def will_fight(pair):
@@ -49,4 +46,8 @@ def fight_result(pair):
         return r2
 
 
-asteroids([10, 10, -1])
+# asteroids([10, -10])
+if asteroids([10, -10]) == []:
+    print("you got the first part")
+else:
+    print("still need to fix the first part")
