@@ -20,9 +20,16 @@ def asteroids(rocks, safe=[]):
     """Produce outcome of all collissions."""
     pair = rocks[:2]
     if will_fight(pair):
-        print('fight')
+        if fight_result(pair) is not None:
+            safe.append(fight_result(pair))
+        # print(safe)
     else:
-        print('no fight')
+        safe.append(pair[0])
+        del rocks[0]
+
+    print(safe)
+    print(rocks)
+    # return(safe)
 
 
 def will_fight(pair):
@@ -31,5 +38,15 @@ def will_fight(pair):
     return r1 // abs(r1) != r2 // abs(r2)
 
 
+def fight_result(pair):
+    """Return the larger of the absolute values or nothing if equal."""
+    r1, r2 = pair
+    if abs(r1) == abs(r2):
+        'both explode'
+    elif abs(r1) > abs(r2):
+        return r1
+    elif abs(r1) < abs(r2):
+        return r2
 
-asteroids([10, -10])
+
+asteroids([10, 10, -1])
