@@ -18,7 +18,19 @@
 
 def asteroids(rocks, safe=[]):
     """Produce outcome of all collissions."""
-    if len(rocks) != 0:
+    if len(rocks) == 0:
+        pass
+    elif len(rocks) == 1:
+        pair = safe[-1], rocks[0]
+        if will_fight(pair):
+            if fight_result(pair) is not None:
+                safe.append(fight_result(pair))
+            del rocks[0]
+        else:
+            safe.append(pair[1])
+            del rocks[0]
+        asteroids(rocks, safe)
+    elif len(rocks) != 0:
         pair = rocks[:2]
         if will_fight(pair):
             if fight_result(pair) is not None:
@@ -28,7 +40,8 @@ def asteroids(rocks, safe=[]):
             safe.append(pair[0])
             del rocks[0]
         asteroids(rocks, safe)
-    return safe
+    print(safe)
+    return(safe)
 
 
 def will_fight(pair):
@@ -48,14 +61,22 @@ def fight_result(pair):
         return r2
 
 
-# print(asteroids([10, -10]))
-# print(asteroids([5, 8, -5]))
+# Two equal numbers in opposite directions returns nothing.
 if asteroids([10, -10]) == []:
-    print("you got the first part")
+    print("Two numbers of equal values in opposite directions both explode.")
 else:
     print("still need to fix the first part")
 
+
+# Two numbers collide and the larger abs val wins.
 if asteroids([5, 8, -5]) == [5, 8]:
-    print("you got the second part")
+    print("The larger abs value wins when two asteroids collide.")
 else:
     print("still need to fix the second part")
+
+
+# It can handle extra asteroids.
+if asteroids([5, 8, -5, 2]) == [5, 8, 2]:
+    print("More asteroids can join the party")
+else:
+    print("still need to fix the third part")
