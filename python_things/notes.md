@@ -319,3 +319,19 @@ Because tuples are immutable they don't carry all the extra overhead and methods
 Because tuples are immutable, you can _always_ successfully unpack a tuple, where as a list, you could potentially run into issues.
 
 And one last bit about unpacking tuples... if you're writing code and need to reference things in a tuple (or list) and find yourself referencing a lot of index positions you can just unpack the tuple or list into variables and it might make things easier for you in the future.
+
+### Import Data from other Python Files:
+You can import other python files into your python files and save yourself from having to copy-paste everything in there.  Do this the same way you'd import other modules or how you'd do it in Ruby.
+
+But, unlike Ruby, you can import just a single piece of a file.
+
+```
+from nested_data import albums
+```
+
+This will import the variable 'albums' (which was a nested list of tuples) from the file nested_data.py and allow access to it.
+
+_It does appear the whole file will run, so if you have rando code hanging out in there it will output in your input_
+
+### Constants
+A constant is a value that is fixed and does not change.  Python doesn't have any data type that you can set like in C or Java.  So, you use an ALL_CAPS name to remind people... 'don't change that.'  Remember tho, its still a variable, and you can still change it.  It is just convention that constant variables that should not change are going to be named in all caps.
