@@ -43,13 +43,13 @@ albums = [
 # print(albums[3][3][3][0])
 # print(albums[2][3][1])
 
-target_album = albums[3]
+# target_album = albums[3]
+#
+# album, artist, year, songs = target_album
 
-album, artist, year, songs = target_album
-
-print(f"Album: {album}")
-print(f"Artist: {artist}")
-print(f"Year: {year}")
-print("Track List:")
-for song in songs:
-    print(f"\t{song[1]}")
+# print(f"Album: {album}")
+# print(f"Artist: {artist}")
+# print(f"Year: {year}")
+# print("Track List:")
+# for song in songs:
+#     print(f"\t{song[1]}")
