@@ -40,7 +40,6 @@ def asteroids(rocks, safe=[]):
             safe.append(pair[0])
             del rocks[0]
         asteroids(rocks, safe)
-    print(safe)
     return(safe)
 
 
@@ -60,23 +59,25 @@ def fight_result(pair):
     elif abs(r1) < abs(r2):
         return r2
 
+# It would be nice to have some actual testing going on here, but for now
+# tests are handled by uncommenting the code below one block at a time.
 
 # Two equal numbers in opposite directions returns nothing.
-if asteroids([10, -10]) == []:
-    print("Two numbers of equal values in opposite directions both explode.")
-else:
-    print("still need to fix the first part")
+# if asteroids([10, -10]) == []:
+#     print("Two numbers of equal values in opposite directions both explode.")
+# else:
+#     print("still need to fix the first part")
 
 
 # Two numbers collide and the larger abs val wins.
-if asteroids([5, 8, -5]) == [5, 8]:
-    print("The larger abs value wins when two asteroids collide.")
-else:
-    print("still need to fix the second part")
+# if asteroids([5, 8, -5]) == [5, 8]:
+#     print("The larger abs value wins when two asteroids collide.")
+# else:
+#     print("still need to fix the second part")
 
 
 # It can handle extra asteroids.
-if asteroids([5, 8, -5, 2]) == [5, 8, 2]:
-    print("More asteroids can join the party")
-else:
-    print("still need to fix the third part")
+# if asteroids([5, 8, -5, 2]) == [5, 8, 2]:
+#     print("More asteroids can join the party")
+# else:
+#     print("still need to fix the third part")
