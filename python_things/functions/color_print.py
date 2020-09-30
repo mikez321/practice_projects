@@ -1,4 +1,6 @@
 """Print in color."""
+import colorama
+
 BLACK = '\u001b[30m'
 RED = '\u001b[31m'
 GREEN = '\u001b[32m'
@@ -26,6 +28,7 @@ def color_print(text: str, effect: str) -> None:
     print(output_string)
 
 
+colorama.init()
 color_print("Hello, Red", RED)
 print("This text should be the default terminal color.")
 color_print("Hello, Blue", BLUE)
@@ -37,3 +40,4 @@ color_print("Hello, Bold", BOLD)
 color_print("Hello, Underline", UNDERLINE)
 color_print("Hello, Reverse", REVERSE)
 color_print("Hello, Black", BLACK)
+colorama.deinit()
