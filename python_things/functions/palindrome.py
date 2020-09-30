@@ -6,7 +6,7 @@ def is_palindrome(word: str) -> bool:
     return word.casefold() == word[::-1].casefold()
 
 
-def palindrome_sentence(sentence):
+def palindrome_sentence(sentence: str) -> bool:
     """Determine if a sentence is a palendrome or not."""
     only_letters = ""
     for char in sentence:
