@@ -354,3 +354,52 @@ raise ValueError("Whatever the error is going to say.")
 ```
 
 There are many different types of errors and you can find them in the python docs under 'exceptions'.
+
+### Keyword Arguments
+You can specify what params you want to pass into a function by using keyword args.  If you have a function that takes two args and has default values for both, you can pass in only the 2nd arg by something like this:
+```
+def banner_text(text=" ", screen_width=80):
+  ...
+
+banner_text(screen_width=60)
+# this uses the default value for text, and 60 for screen_width.
+# if you passed in 60 as the only arg, it would use the default screen width
+# and 60 as your text.
+```
+
+### Docstrings
+Docstrings provide documentation for functions, classes, modules etc.  You can view them by doing something like `print(method.__doc__)` in an interactive py session.
+
+Different companies might want different info in Docstrings, there is not one-size-fits-all.
+
+You can also view a docstring with `help(function_name)`.
+
+### Modules
+A module is file containing Python definitions and statements.  The file name is the module name with the suffix __.py__ appended.
+
+Each new __.py__ file that you create becomes a new Python module.
+
+Modules can be imported into other modules or executed.
+
+### Function Annotation and Type hints
+Inside functions you can define what data types should be used with function annotation.  It looks like this:
+
+```
+def is_palindrome(word: str) -> bool:
+    """Determine if a word is the same forwards and backwards."""
+    return word.casefold() == word[::-1].casefold()
+```
+
+This says you'll pass in an argument called 'word' which should be of type 'str' and will return a boolean value
+
+If you annotate things with default values, you will need to add spaces around the = and what the default value is, then add a : after the default argument, and then a space with the data type.
+
+```
+def banner_text(text=" ", screen_width=80)
+```
+would become:
+```
+def banner_text(text: str = " ", screen_width: int = 80) -> None:
+```
+
+Finally, if you annotate _any_ of a function, you should annotate _all_ of the function.
