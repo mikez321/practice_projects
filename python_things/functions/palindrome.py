@@ -8,11 +8,11 @@ def is_palindrome(word):
 
 def palindrome_sentence(sentence):
     """Determine if a sentence is a palendrome or not."""
-    only_letters = []
+    only_letters = ""
     for char in sentence:
         if char.isalpha() or char.isnumeric():
-            only_letters.append(char.casefold())
-    return only_letters == only_letters[::-1]
+            only_letters += char
+    return is_palindrome(only_letters)
 
 
 # word = input("Please enter a word to check: ")
