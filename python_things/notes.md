@@ -335,3 +335,22 @@ _It does appear the whole file will run, so if you have rando code hanging out i
 
 ### Constants
 A constant is a value that is fixed and does not change.  Python doesn't have any data type that you can set like in C or Java.  So, you use an ALL_CAPS name to remind people... 'don't change that.'  Remember tho, its still a variable, and you can still change it.  It is just convention that constant variables that should not change are going to be named in all caps.
+
+### Functions
+Function names start with `def` and follow the same rules as variables: start with lower case, separated by _ and then has a `():`
+
+You will always need to add the () to the end of functions when you write or call them.
+
+You will use `return` to tell what the result of the function is.  When a function hits a return it stops running!
+
+If you don't have a return, the return value of the function will be `None`.
+
+Functions don't _need_ to return anything tho... maybe they just need to do something to a piece of data, ya know?  Functions might alter data and not return a value.
+
+### Errors
+If you want to generate an error, make sure it is descriptive and you can then add it by something like:
+```
+raise ValueError("Whatever the error is going to say.")
+```
+
+There are many different types of errors and you can find them in the python docs under 'exceptions'.
