@@ -1,8 +1,22 @@
 """Create a banner across the screen."""
 
 
-def banner_text(text=" ", screen_width=80):
-    """Create a banner with given text."""
+def banner_text(text: str = " ", screen_width: int = 80) -> None:
+    """
+    Create a banner-style text with centered text.
+
+    :Args
+        text (str): Defaults to a space and prints to the screen
+            as two asterisks (**) on each side of the banner.  If
+            text is supplied the text will be centered in the banner
+            block.
+        screen_width (int): Defaults to 80.  Determines the width of
+            the banner.
+
+    :Raises
+        ValueError: Value Error is raised if provdied text is longer
+            than scrreen_width parameter.
+    """
     if len(text) > screen_width - 4:
         raise ValueError(f"String '{text}' is larger than specified "
                          f"width {screen_width}.")
