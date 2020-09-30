@@ -6,8 +6,24 @@ def is_palindrome(word):
     return word.casefold() == word[::-1].casefold()
 
 
-word = input("Please enter a word to check: ")
-if is_palindrome(word):
-    print(f"'{word}' is a palindrome.")
+def palindrome_sentence(sentence):
+    """Determine if a sentence is a palendrome or not."""
+    only_letters = []
+    for char in sentence:
+        if char.isalpha() or char.isnumeric():
+            only_letters.append(char.casefold())
+    return only_letters == only_letters[::-1]
+
+
+# word = input("Please enter a word to check: ")
+# if is_palindrome(word):
+#     print(f"'{word}' is a palindrome.")
+# else:
+#     print(f"'{word}' is not a palindrome.")
+
+sentence = input("Enter a whole sentence to check: ")
+
+if palindrome_sentence(sentence):
+    print(f"'{sentence}' is a palindrome.")
 else:
-    print(f"'{word}' is not a palindrome.")
+    print(f"'{sentence}' is not a palindrome.")
