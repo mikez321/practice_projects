@@ -1,10 +1,12 @@
 """Create a banner across the screen."""
+
+
 def banner_text(text):
     """Create a banner with given text."""
-    screen_width = 80
+    screen_width = 50
     if len(text) > screen_width - 4:
-        print("EEK!!")
-        print("THE TEXT IS TOO LONG TO FIT IN THE SPECIFIED WIDTH!!")
+        raise ValueError(f"String '{text}' is larger than specified "
+                         f"width {screen_width}.")
 
     if text == "*":
         print("*" * screen_width)
