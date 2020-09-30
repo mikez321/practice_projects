@@ -1,7 +1,7 @@
 """Explore functions and palindromes."""
 
 
-def is_palindrome(word):
+def is_palindrome(word: str) -> bool:
     """Determine if a word is the same forwards and backwards."""
     return word.casefold() == word[::-1].casefold()
 
