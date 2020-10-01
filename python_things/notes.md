@@ -403,3 +403,11 @@ def banner_text(text: str = " ", screen_width: int = 80) -> None:
 ```
 
 Finally, if you annotate _any_ of a function, you should annotate _all_ of the function.
+
+### Virtual Environments
+Always use some kind of virtual environments.  When you're not using a venv, Python will always use the default packages and installations.
+
+Also, when you're in a venv, `python` will run whatever version of Python is installed in that venv.  That's why I got in the habit of having to type 'python3' and 'pip3' in Oh Crop! because the venvs weren't running properly.
+
+### *args (star args)
+Putting a * in front of your args in a function means that Python will pack up all those args that are passed into the function as a single tuple.  You can then use that tuple and do whatever you want with all the args passed into the function.

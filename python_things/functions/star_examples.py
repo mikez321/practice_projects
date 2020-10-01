@@ -5,7 +5,9 @@ numbers = (0, 1, 2, 3, 4, 5)
 # print(*numbers)
 # print(*numbers, sep=';')
 
+
 def test_star(*args):
+    """Write function with star args."""
     print(args)
     for x in args:
         print(x)
