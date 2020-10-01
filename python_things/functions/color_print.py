@@ -16,22 +16,26 @@ UNDERLINE = '\u001b[4m'
 REVERSE = '\u001b[7m'
 
 
-def color_print(text: str, effect: str) -> None:
+def color_print(text: str, *effects: str) -> None:
     """
     Print `text` using the ANSI sequences to change color, etc.
 
     :param text: The text to print.
-    :param effect: The effect we want.  One of the constants
+    :param effects: The effects we want.  One of the constants
         defined at the start of this module
     """
-    output_string = f"{effect}{text}{RESET}"
+    effects_string = ''.join(effects)
+    output_string = f"{effects_string}{text}{RESET}"
     print(output_string)
 
 
 colorama.init()
 color_print("Hello, Red", RED)
+color_print("Hello, Red, Bold", RED, BOLD)
 print("This text should be the default terminal color.")
 color_print("Hello, Blue", BLUE)
+color_print("Hello, Blue Reversed", BLUE, REVERSE)
+color_print("Hello, Blue Reversed Underline", BLUE, REVERSE, UNDERLINE)
 color_print("Hello, Yellow", YELLOW)
 color_print("Hello, Green", GREEN)
 color_print("Hello, Magenta", MAGENTA)
