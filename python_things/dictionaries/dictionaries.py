@@ -36,3 +36,10 @@ print(description2)
 # print(bike['color'])
 # bike.clear()
 # print(bike)
+
+for item in fruit:
+    print(item)
+    print(fruit[item])
+
+print(fruit.values())
+print(list(fruit.keys()))
