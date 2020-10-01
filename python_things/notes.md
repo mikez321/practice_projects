@@ -347,6 +347,8 @@ If you don't have a return, the return value of the function will be `None`.
 
 Functions don't _need_ to return anything tho... maybe they just need to do something to a piece of data, ya know?  Functions might alter data and not return a value.
 
+In general, a function should perform an action _or_ return something.  They probably shouldn't do both.  They should be a small piece of code that can be reused so you don't want them doing too much.  Functions that perform actions should return `None`.
+
 ### Errors
 If you want to generate an error, make sure it is descriptive and you can then add it by something like:
 ```
