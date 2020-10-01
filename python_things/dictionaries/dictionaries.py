@@ -43,3 +43,4 @@ for item in fruit:
 
 print(fruit.values())
 print(list(fruit.keys()))
+print(fruit.items())
