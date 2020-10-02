@@ -51,6 +51,13 @@ veg = {
 # print(list(fruit.keys()))
 # print(fruit.items())
 
-fruit.update(veg)
-# for item in fruit:
-#     print(item + "- " + fruit[item])
+# fruit.update(veg)
+for item in fruit:
+    print(item + "- " + fruit[item])
+
+print('=' * 40)
+
+combined = fruit.copy()
+combined.update(veg)
+for item in combined:
+    print(item + '- ' + combined[item])
