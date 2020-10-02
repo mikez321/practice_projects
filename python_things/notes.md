@@ -413,3 +413,105 @@ Also, when you're in a venv, `python` will run whatever version of Python is ins
 
 ### *args (star args)
 Putting a * in front of your args in a function means that Python will pack up all those args that are passed into the function as a single tuple.  You can then use that tuple and do whatever you want with all the args passed into the function.
+
+## Dictionaries
+These are Hashes in Ruby.
+There is a dictionary method `get` that looks up a key and returns its value.  If that key doesn't exist the returned value is `None` (way more helpful than just an error!)
+
+```
+fruit = {
+    "orange": "a sweet, orange, citrus fruit",
+    "apple": "good for making cider",
+    "lemon": "a sour, yellow citrus fruit",
+    "grape": ":a small, sweet fruit growing in bunches",
+    "lime": "a sour, green citrus fruit",
+}
+
+description = fruit.get('apple')
+print(description)
+>>> 'good for making cider'
+
+description2 = fruit.get('cherry')
+print(description2)
+>>> None
+```
+
+`get` does have a 'default value' as a 2nd argument.  Instead of returning None it can just return that default value.
+
+### Interesting note on Dictionaries
+In older versions of Python, dictionaries might print in any random order.  That has since been changed and they will return in order each time like in Ruby, but if you're using older versions that might not always be the case.
+
+You can return things in the same order every time by sorting the dictionary first with the `.sort()` method.
+
+`.keys()` and `.values()` are also methods like in Ruby, but they return a 'dict_keys' or 'dict_values' object, so you'll need to convert that to a list if you're trying to do something with the keys or values.
+
+dict_keys and dict_values will change to represent the most up to date version of that dictionary.  If you convert it to a list, then it will save it in its current state.
+
+There's also a `.items()` method that returns a dict_items object, a tuple of the keys and values.
+
+### dict constructor:
+You can also unpack a tuple into a dictionary.  Pretty straightforward, but still exciting.
+```
+apple = ('apple': 'good for making cider')
+
+print(dict(apple))
+
+>>> {'apple', 'good for making cider'}
+```
+
+### .update() and .copy() method
+Combine two dictionaries with the update method.  Return value of this is `None`
+
+### Sets
+Similar to a dictionary and a list, elements in the set are not accessed by keys.  Sets can be defined within curly braces.
+
+sets can be created with the 'set constructor' (`set()`) and passing in a list, or by explicitly defining the set inside curly braces.
+
+Sets are also unordered so when they print, items will be randomly ordered every time.  The set itself is mutable, but the items inside the set are immutable.
+
+Sets have a similar method to the dictionary `.update()` called `.union()`.  It will join two sets.  But, since sets must have unique values, any duplicate values will not be added into the set, only unique values.  Similarly, if you create a set out of a list with duplicate values, the duplicates will be removed and you'll only get unique values.
+
+`.intersection()` is the opposite of `.union()` and will only return values that exist in both sets.
+
+Finally, you can subtract sets from each other.  Set b - Set a = new set with everything that was in b less everything in set a.
+
+# Object Oriented Python
+So far, this is very much like Ruby.  New classes are written in upper UpperCamelCase and prepended with the keyword `class`.  Instead of def initialize(things), you will use this:
+```
+class Kettle(object):
+  def __init__(self, make, price):
+    self.make = make
+    self.price = price
+```
+
+PEP8 style guides say you should have a single space between methods of a class unlike the 2 spaces in a module.
+
+One interesting thing you can do in Python that you can't do in Ruby is add attributes to an instance.  Using the above example...
+```
+kenwood = Kettle("Kenwood", 12.99)
+hamilton = Kettle("Hamilton", 14.99)
+
+kenwood.power = 1.5
+
+print(kenwood.power)
+>> 1.5
+
+print(hamilton.power)
+>> AttributeError: type object 'Kettle' has no attribute 'power'
+```
+
+### That 'self' thing...
+What is it?  Its a reference to an instance of the class.  It is used to refer to instance variables.  Self is also going to be used as the first arg of methods of an object.  If you want to use class methods on instances of a class, you can use the instance method on the class object and pass it the instance as an argument.
+```
+kenwood = Kettle("Kenwood", 12.99)
+print(kenwood.on)
+>> False
+
+Kettle.switch_on(kenwood)
+
+print(kenwood.on)
+>> True
+```
+
+### Class Attributes
+If you want all instances of a class to have certain attributes you can create a class attribute by defining the attribute as a variable _above_ the `__init__` method.  At that point, any instance of the class will have that shared attribute.
