@@ -3,8 +3,14 @@ fruit = {
     "orange": "a sweet, orange, citrus fruit",
     "apple": "good for making cider",
     "lemon": "a sour, yellow citrus fruit",
-    "grape": ":a small, sweet fruit growing in bunches",
+    "grape": "a small, sweet fruit growing in bunches",
     "lime": "a sour, green citrus fruit",
+}
+
+veg = {
+    'cabbage': "every child's favorite",
+    'carrots': 'bunnies love them',
+    'sprouts': 'great on sammies'
 }
 
 # print(fruit)
@@ -18,11 +24,11 @@ fruit = {
 # # produces a key error
 # print(fruit['tomato'])
 
-description = fruit.get('apple')
-print(description)
-
-description2 = fruit.get('cherry')
-print(description2)
+# description = fruit.get('apple')
+# print(description)
+#
+# description2 = fruit.get('cherry')
+# print(description2)
 
 
 # bike = {
@@ -37,10 +43,14 @@ print(description2)
 # bike.clear()
 # print(bike)
 
-for item in fruit:
-    print(item)
-    print(fruit[item])
+# for item in fruit:
+#     print(item)
+#     print(fruit[item])
+#
+# print(fruit.values())
+# print(list(fruit.keys()))
+# print(fruit.items())
 
-print(fruit.values())
-print(list(fruit.keys()))
-print(fruit.items())
+fruit.update(veg)
+# for item in fruit:
+#     print(item + "- " + fruit[item])
