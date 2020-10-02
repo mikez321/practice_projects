@@ -8,11 +8,7 @@ import unittest
 
 def num_chars(phrase, letter):
     """Count the number of a given letter in a phrase."""
-    counter = 0
-    for char in phrase:
-        if char.casefold() == letter.casefold():
-            counter += 1
-    return counter
+    return phrase.count(letter)
 
 
 class NumCharsTest(unittest.TestCase):
