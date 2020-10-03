@@ -1,21 +1,6 @@
 """Cassidoo Challenge - Gimme Pizza."""
 import unittest
 import math
-# Given an array of people objects (where each person has a name and a number
-# of pizza slices they’re hungry for) and a number for the number of slices
-# that the pizza can be sliced into, return the number of pizzas you need to
-# buy.
-#
-# Example:
-#
-# $ arr = [
-#     { name: Joe, num: 9 },
-#     { name: Cami, num: 3 },
-#     { name: Cassidy, num: 4 }
-# ]
-# $ gimmePizza(arr, 8)
-# $ 2 // 16 slices needed, pizzas can be sliced into 8 pieces, so 2 pizzas
-# should be ordered
 
 
 def get_slices(person):
@@ -25,14 +10,14 @@ def get_slices(person):
 
 def gimme_pizza(people: list, slices: int) -> int:
     """
-    Return the number of pizzas that needed.
+    Return the number of pizzas that need to be ordered.
 
     :param people: A list of person objects.  Each person has a name and
         the number of slices of pizza they are hungry for.
     :param slices: An int that represents how many slices a pizza is cut
         into.
-    :return: Returns the number of pizzas that should be purchased to give
-        everyone enough slices of pizza.
+    :return: Returns the number of pizzas that should be ordered to give
+        everyone their desired slices of pizza.
     """
     total_slices = sum(map(get_slices, people))
     pizzas = total_slices / slices
@@ -69,6 +54,10 @@ class TestGimmePizza(unittest.TestCase):
         arr = [mike, erin, charlotte, sydney]
 
         self.assertEqual(gimme_pizza(arr, 8), 3)
+
+        hungry_pup = [charlotte]
+
+        self.assertEqual(gimme_pizza(hungry_pup, 8), 1)
 
     def test_show_how_many_slices_of_pizza_a_person_wants(self):
         """Return the number of slices of pizza a person wants."""
