@@ -18,6 +18,11 @@ import math
 # should be ordered
 
 
+def get_slices(person):
+    """Return the number of slices of pizza wanted by a person."""
+    return person.pizza_slices
+
+
 def gimme_pizza(people: list, slices: int) -> int:
     """
     Return the number of pizzas that needed.
@@ -29,11 +34,7 @@ def gimme_pizza(people: list, slices: int) -> int:
     :return: Returns the number of pizzas that should be purchased to give
         everyone enough slices of pizza.
     """
-    needed_slices = []
-    for person in people:
-        needed_slices.append(person.pizza_slices)
-
-    total_slices = sum(needed_slices)
+    total_slices = sum(map(get_slices, people))
     pizzas = total_slices / slices
 
     return math.ceil(pizzas)
@@ -68,6 +69,12 @@ class TestGimmePizza(unittest.TestCase):
         arr = [mike, erin, charlotte, sydney]
 
         self.assertEqual(gimme_pizza(arr, 8), 3)
+
+    def test_show_how_many_slices_of_pizza_a_person_wants(self):
+        """Return the number of slices of pizza a person wants."""
+        mike = Person('Mike', 4)
+
+        self.assertEqual(get_slices(mike), 4)
 
 
 if __name__ == '__main__':
