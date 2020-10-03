@@ -29,11 +29,12 @@ def gimme_pizza(people: list, slices: int) -> int:
     :return: Returns the number of pizzas that should be purchased to give
         everyone enough slices of pizza.
     """
-    needed_slices = 0
+    needed_slices = []
     for person in people:
-        needed_slices += person.pizza_slices
+        needed_slices.append(person.pizza_slices)
 
-    pizzas = needed_slices / slices
+    total_slices = sum(needed_slices)
+    pizzas = total_slices / slices
 
     return math.ceil(pizzas)
 
