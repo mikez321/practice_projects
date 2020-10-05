@@ -13,8 +13,17 @@ def min_num(nums):
     :param nums: A list of numbers that were in ascending order, but have been
         rotated at some point.  (Example: [0, 2, 4, 7, 9] might become
         [7, 9, 0, 2, 4])
+
+    Of note: This function uses enumerate() which returns an index as it is
+        on that item in the loop.  Enumerate will operate on On (linear) time
+        and looking up items in a list by index (nums[index] and
+        nums[index +1]) will operate on O1 (constant).  Therefore the time
+        complexity of this function is On.
     """
-    return None
+    for index, num in enumerate(nums):
+        if nums[index] > nums[index + 1]:
+            return nums[index + 1]
+            break
 
 
 class MinNumTest(unittest.TestCase):
