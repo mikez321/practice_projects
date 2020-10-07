@@ -23,13 +23,11 @@ def question_marks(code: str) -> bool:
 
     for index, char in enumerate(code):
         if char.isnumeric() and num_1 is None:
-            num_1 = int(char)
-            index_1 = index
+            num_1, index_1 = int(char), index
         elif char.isnumeric():
             if num_1 + int(char) == 10:
                 tens.append([index_1, index])
-            num_1 = int(char)
-            index_1 = index
+            num_1, index_1 = int(char), index
 
     if len(tens) == 0:
         return False
