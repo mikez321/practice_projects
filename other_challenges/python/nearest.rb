@@ -3,9 +3,8 @@ require 'minitest/pride'
 
 def nearest_value(numbers, target)
   numbers = numbers.sort
-  result = numbers.map do |num|
-    (target - num).abs
-  end
+  
+  result = numbers.map { |num| (target - num).abs }
 
   min_index = result.index(result.min)
 
