@@ -17,12 +17,12 @@ def longest_word(sen: str) -> str:
     split_words = sen.split()
 
     for index, word in enumerate(split_words):
-        alphas = 0
-        for letter in word:
-            if letter.isalpha() or letter.isnumeric():
-                alphas += 1
-        if alphas > longest_word:
-            longest_word, longest_index = alphas, index
+        alphas = []
+        for char in word:
+            if char.isalpha() or char.isnumeric():
+                alphas.append(char)
+        if len(alphas) > longest_word:
+            longest_word, longest_index = len(alphas), index
 
     return split_words[longest_index]
 
