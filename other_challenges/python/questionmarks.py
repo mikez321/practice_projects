@@ -17,32 +17,29 @@ def question_marks(code: str) -> bool:
         are 3 question marks between 6 and 4, and also three question marks
         between 5 and 5.
     """
+    tens = []
     num_1 = None
     index_1 = None
-    num_2 = None
-    index_2 = None
+
     for index, char in enumerate(code):
         if char.isnumeric() and num_1 is None:
             num_1 = int(char)
             index_1 = index
         elif char.isnumeric():
-            num_2 = int(char)
-            index_2 = index
+            if num_1 + int(char) == 10:
+                tens.append([index_1, index])
+            num_1 = int(char)
+            index_1 = index
 
-            if num_1 + num_2 == 10:
-                snippet = code[index_1:(index_2 + 1)]
-                if snippet.count('?') != 3:
-                    return False
-                    break
-                else:
-                    num_1 = num_2
-                    index_1 = index_2
-                    num_2 = None
-                    index_2 = None
-
-    if num_1 is None:
+    if len(tens) == 0:
         return False
     else:
+        for index_pair in tens:
+            snippet = code[index_pair[0]: (index_pair[-1] + 1)]
+            if snippet.count('?') != 3:
+                return False
+                break
+
         return True
 
 
