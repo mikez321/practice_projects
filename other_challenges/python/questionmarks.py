@@ -33,7 +33,7 @@ def question_marks(code: str) -> bool:
         return False
     else:
         for index_pair in tens:
-            snippet = code[index_pair[0]: (index_pair[-1] + 1)]
+            snippet = code[index_pair[0]: index_pair[-1]]
             if snippet.count('?') != 3:
                 return False
                 break
