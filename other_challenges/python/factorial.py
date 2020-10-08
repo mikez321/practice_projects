@@ -2,11 +2,12 @@
 import unittest
 
 
-def first_factorial(num: int) -> int:
+def first_factorial(num: int, result: int = 1) -> int:
     """
     Calculate the factoral of a number.
 
     :param num: A positive integer
+    :param result: Default value of 1, but will increment in recursive function
     :result: The factoral of that number
 
     :Example:
@@ -15,13 +16,10 @@ def first_factorial(num: int) -> int:
 
     >> 24
     """
-    result = 1
-    nums = list(range(1, num + 1))
-    while len(nums) > 0:
-        result *= nums[-1]
-        nums = nums[:-1]
-
-    return result
+    if num == 0:
+        return result
+    else:
+        return first_factorial((num - 1), (num * result))
 
 
 class FirstFactorialTest(unittest.TestCase):
