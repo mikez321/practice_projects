@@ -16,10 +16,10 @@ def first_factorial(num: int, result: int = 1) -> int:
 
     >> 24
     """
-    if num == 0:
-        return result
-    else:
+    if num != 0:
         return first_factorial((num - 1), (num * result))
+
+    return result
 
 
 class FirstFactorialTest(unittest.TestCase):

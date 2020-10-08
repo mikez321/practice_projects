@@ -26,7 +26,7 @@ def question_marks(code: str) -> bool:
             num_1, index_1 = int(char), index
         elif char.isnumeric():
             if num_1 + int(char) == 10:
-                tens.append([index_1, index])
+                tens.append((index_1, index))
             num_1, index_1 = int(char), index
 
     if len(tens) == 0:
