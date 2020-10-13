@@ -9,6 +9,8 @@ def baby_lisp(command)
     'divide': :/
   }
 
+  require "pry"; binding.pry
+
   singles = command.split
 
   action = singles.first.delete('()').to_sym
@@ -22,6 +24,12 @@ def baby_lisp(command)
   end
 
   num1.send(math[action], num2)
+end
+
+def reorder(input)
+  unstrung = input.delete('()').split.reverse
+  move = unstrung.shift
+  unstrung.push(move).join(' ')
 end
 
 class BabyLispTest < Minitest::Test
@@ -39,6 +47,10 @@ class BabyLispTest < Minitest::Test
 
   def test_it_can_divide
     assert_equal baby_lisp('(divide 3 2)'), 1.5
+  end
+
+  def test_it_can_reorder_a_string
+    assert_equal reorder('(add 3 2)'), '3 add 2'
   end
 
   def test_it_can_perform_more_than_one_calculation
