@@ -1,0 +1,3 @@
+[submodule "waterdrops_exploration/wd_explore"]
+	path = waterdrops_exploration/wd_explore
+	url = git@github.com:mikez321/wd_explore.git
