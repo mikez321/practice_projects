@@ -2,20 +2,14 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 def find_intersection(strArr)
-  result = []
   all = strArr.first.split + strArr.last.split
   all = all.map { |item| item.delete(',')}
-  all.each do |item|
-    if all.count(item) > 1
-      result << item
-    end
+
+  all.map do |item|
+    all.delete(item) if all.count(item) == 1
   end
 
-  if result.length.zero?
-    false
-  else
-    result.uniq.join(',')
-  end
+  all.length.zero? ? false : all.uniq.join(',')
 end
 
 class FindIntersectionTest < Minitest::Test
