@@ -3,9 +3,9 @@ import unittest
 
 
 def frequency(all_dates: list,
-              day: str = None,
-              month: str = None,
-              year: str = None) -> int:
+              match_day: str = None,
+              match_month: str = None,
+              match_year: str = None) -> int:
     """
     Return the frequency a day month or year occurrs in the given dates.
 
@@ -29,7 +29,16 @@ def frequency(all_dates: list,
         frequency(dates, month='12')
         >>> 0
     """
-    
+    matches = []
+    for date in all_dates:
+        month = date.split('/')[0]
+        day = date.split('/')[1]
+        year = date.split('/')[2]
+
+        if month == match_month:
+            matches.append(date)
+
+    return len(matches)
 
 
 class DateTest(unittest.TestCase):
@@ -51,7 +60,9 @@ class DateTest(unittest.TestCase):
             "4/26/2020",
         ]
 
-        self.assertEqual(frequency(dates, month=3), 1)
+        self.assertEqual(frequency(dates, match_month='3'), 1)
+        self.assertEqual(frequency(dates, match_month='1'), 2)
+        self.assertEqual(frequency(dates, match_month='4'), 4)
 
 
 if __name__ == '__main__':
