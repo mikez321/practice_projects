@@ -30,21 +30,28 @@ def frequency(all_dates: list,
         >>> 0
     """
     matches = []
+
     for date in all_dates:
         month = date.split('/')[0]
         day = date.split('/')[1]
         year = date.split('/')[2]
 
-        if month == match_month:
+        if match_month == month:
             matches.append(date)
 
-    return len(matches)
+        if match_day == day:
+            matches.append(date)
+
+        if match_year == year:
+            matches.append(date)
+
+    return len(set(matches))
 
 
 class DateTest(unittest.TestCase):
     """Testing for dates."""
 
-    def test_it_returns_a_frequency_of_dates(self):
+    def test_it_returns_frequency_by_month(self):
         """Return a number representning the frequency of date input."""
         dates = [
             "11/14/2019",
@@ -63,6 +70,44 @@ class DateTest(unittest.TestCase):
         self.assertEqual(frequency(dates, match_month='3'), 1)
         self.assertEqual(frequency(dates, match_month='1'), 2)
         self.assertEqual(frequency(dates, match_month='4'), 4)
+
+    def test_it_return_frequency_by_year(self):
+        """Return a number representning the frequency of year input."""
+        dates = [
+            "11/14/2019",
+            "12/26/2019",
+            "1/1/2020",
+            "1/19/2020",
+            "2/11/2020",
+            "2/15/2020",
+            "3/11/2020",
+            "4/5/2020",
+            "4/11/2020",
+            "4/14/2020",
+            "4/26/2020",
+        ]
+
+        self.assertEqual(frequency(dates, match_year='2019'), 2)
+        self.assertEqual(frequency(dates, match_year='2020'), 9)
+
+    def test_it_return_frequency_by_day(self):
+        """Return a number representning the frequency of year input."""
+        dates = [
+            "11/14/2019",
+            "12/26/2019",
+            "1/1/2020",
+            "1/19/2020",
+            "2/11/2020",
+            "2/15/2020",
+            "3/11/2020",
+            "4/5/2020",
+            "4/11/2020",
+            "4/14/2020",
+            "4/26/2020",
+        ]
+
+        self.assertEqual(frequency(dates, match_day='14'), 2)
+        self.assertEqual(frequency(dates, match_day='11'), 3)
 
 
 if __name__ == '__main__':
