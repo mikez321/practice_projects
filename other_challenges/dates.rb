@@ -3,33 +3,39 @@ require 'minitest/pride'
 
 def freq(sample_dates, **kwargs)
   result = []
+  match_date = [kwargs[:month], kwargs[:day], kwargs[:year]]
+  match_date = match_date.map do |part|
+    if part.nil?
+      part = '*'
+    else
+      part = part
+    end
+  end.join('/')
 
   sample_dates.each do |date|
-    month = date.split('/').first
-    day = date.split('/')[1]
-    year = date.split('/').last
+    !kwargs[:month].nil? ? month = date.split('/').first : month = '*'
+    !kwargs[:day].nil? ? day = date.split('/')[1] : day = '*'
+    !kwargs[:year].nil? ? year = date.split('/').last : year = '*'
 
-    if kwargs[:match_month] == month
-      result << date
-    elsif kwargs[:match_day] == day
-      result << date
-    elsif kwargs[:match_year] == year
+    date = [month, day, year].join('/')
+
+    if date == match_date
       result << date
     end
   end
-
   result.length
 end
 
 class DateTest < Minitest::Test
   def setup
     @dates = [
+        "1/1/2019",
         "11/14/2019",
         "12/26/2019",
         "1/1/2020",
         "1/19/2020",
         "2/11/2020",
-        "2/15/2020",
+        "2/26/2020",
         "3/11/2020",
         "4/5/2020",
         "4/11/2020",
@@ -39,14 +45,19 @@ class DateTest < Minitest::Test
   end
 
   def test_it_can_return_number_of_matching_months
-    assert_equal freq(@dates, match_month:'3'), 1
+    assert_equal freq(@dates, month:'3'), 1
   end
 
   def test_it_can_return_number_of_matching_days
-    assert_equal freq(@dates, match_day:'11'), 3
+    assert_equal freq(@dates, day:'11'), 3
   end
 
   def test_it_can_return_number_of_matching_years
-    assert_equal freq(@dates, match_year:'2019'), 2
+    assert_equal freq(@dates, year:'2019'), 3
+  end
+
+  def test_it_can_return_number_of_matching_for_many_inputs
+    assert_equal freq(@dates, month: '1', year:'2020'), 2
+    assert_equal freq(@dates, day: '26', year:'2020'), 2
   end
 end
