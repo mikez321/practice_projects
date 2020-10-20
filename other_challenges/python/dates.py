@@ -3,49 +3,60 @@ import unittest
 
 
 def frequency(all_dates: list,
-              match_day: str = None,
-              match_month: str = None,
-              match_year: str = None) -> int:
+              match_day: str = 'x',
+              match_month: str = 'x',
+              match_year: str = 'x') -> int:
     """
     Return the frequency a day month or year occurrs in the given dates.
 
     :param all_dates: This is a list of all the possible dates to search
         through.
-    :param day: A string representing the day of a month
-    :param month: A string representing the number of a month
-    :param year: A string representing the number of the year
+    :param match_day: A string representing the day of a month, default value
+        is 'x' as a 'wildcard'.
+    :param match_month: A string representing the number of a month, default
+        value is 'x' as a 'wildcard'.
+    :param match_year: A string representing the number of the year, default
+        value is 'x' as a 'wildcard'.
     :return: The return is an integer representing the frequency of how often
         that day, month, or year occurrs in the provided dates.  It is possible
         to pass in more than one parameter at a time.
 
     :Examples:
         dates = ["3/21/2004", "3/19/2004", "3/21/2020"]
-        frequency(dates, month='3')
+        frequency(dates, match_month='3')
         >>> 3
-        frequency(dates, day='21')
+        frequency(dates, match_day='21')
         >>> 2
-        frequency(dates, month='3', day='21')
+        frequency(dates, match_month='3', day='21')
         >>> 2
-        frequency(dates, month='12')
+        frequency(dates, match_month='12')
         >>> 0
     """
-    matches = []
+    match_date = '/'.join([match_month, match_day, match_year])
+    result = []
 
     for date in all_dates:
-        month = date.split('/')[0]
-        day = date.split('/')[1]
-        year = date.split('/')[2]
+        if match_month == 'x':
+            month = match_month
+        else:
+            month = date.split('/')[0]
 
-        if match_month == month:
-            matches.append(date)
+        if match_day == 'x':
+            day = match_day
+        else:
+            day = date.split('/')[1]
 
-        if match_day == day:
-            matches.append(date)
+        if match_year == 'x':
+            year = match_year
+        else:
+            year = date.split('/')[2]
 
-        if match_year == year:
-            matches.append(date)
+        date = '/'.join([month, day, year])
 
-    return len(set(matches))
+        if match_date == date:
+            result.append(date)
+
+    return len(result)
 
 
 class DateTest(unittest.TestCase):
@@ -109,6 +120,24 @@ class DateTest(unittest.TestCase):
         self.assertEqual(frequency(dates, match_day='14'), 2)
         self.assertEqual(frequency(dates, match_day='11'), 3)
 
+    def test_it_return_frequency_by_combinations_of_dates(self):
+        """Return a number representning the frequency of year input."""
+        dates = [
+            "1/14/2019",
+            "6/26/2019",
+            "1/1/2020",
+            "1/19/2020",
+            "2/11/2020",
+            "2/15/2020",
+            "4/5/2020",
+            "4/11/2020",
+            "4/14/2020",
+            "6/26/2020",
+        ]
+
+        self.assertEqual(frequency(dates, match_month='1', match_year='2020'), 2)
+        self.assertEqual(frequency(dates, match_day='26', match_month='6'), 2)
+        self.assertEqual(frequency(dates, match_month='2', match_year='2019'), 0)
 
 if __name__ == '__main__':
     unittest.main()
