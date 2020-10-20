@@ -2,26 +2,20 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 def freq(sample_dates, **kwargs)
-  result = []
-  match_date = [kwargs[:month], kwargs[:day], kwargs[:year]]
-  match_date = match_date.map do |part|
-    if part.nil?
-      part = '*'
-    else
-      part = part
-    end
+  match_date = [kwargs[:month], kwargs[:day], kwargs[:year]].map do |part|
+    part.nil? ? part = '*' :  part = part
   end.join('/')
 
+  result = []
+
   sample_dates.each do |date|
-    !kwargs[:month].nil? ? month = date.split('/').first : month = '*'
-    !kwargs[:day].nil? ? day = date.split('/')[1] : day = '*'
-    !kwargs[:year].nil? ? year = date.split('/').last : year = '*'
+    kwargs[:month].nil? ? month = '*' : month = date.split('/').first
+    kwargs[:day].nil? ? day = '*' : day = date.split('/')[1]
+    kwargs[:year].nil? ? year = '*' : year = date.split('/').last
 
     date = [month, day, year].join('/')
 
-    if date == match_date
-      result << date
-    end
+    result << date if date == match_date
   end
   result.length
 end
