@@ -24,6 +24,8 @@ def nearest_value(nums: set, target: int) -> int:
             if distance < smallest_distance:
                 smallest_distance = distance
                 result = num
+            elif distance == smallest_distance and num < result:
+                result = num
 
     return result
 
@@ -53,8 +55,12 @@ class NearestTest(unittest.TestCase):
         self.assertEqual(nearest_value({4, 7, 10, 11, 12, 17}, 9), 10)
 
     def test_if_two_nums_are_equal_distance_the_smaller_wins(self):
-        """Price is right rules here."""
+        """If equidistant, the smaller number is returned."""
         self.assertEqual(nearest_value({4, 7, 9, 10, 11, 12, 17}, 8), 7)
+
+    def test_it_can_handle_working_in_negative_number_ranges(self):
+        """-2 is smaller than 0."""
+        self.assertEqual(nearest_value({0, -2}, -1), -2)
 
 
 if __name__ == '__main__':
