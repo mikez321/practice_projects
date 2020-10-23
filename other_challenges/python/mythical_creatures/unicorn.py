@@ -14,10 +14,10 @@ class Unicorn:
         return "**;* {} *;**".format(whatever)
 
 
-rob = Unicorn('Robert')
-barb = Unicorn('Barbara', 'Purple')
-
-print(rob.name == "Robert")
-print(rob.color == "White")
-print(barb.color == "Purple")
-print(rob.say('Fabulous!') == "**;* Fabulous! *;**")
+# rob = Unicorn('Robert')
+# barb = Unicorn('Barbara', 'Purple')
+#
+# print(rob.name == "Robert")
+# print(rob.color == "White")
+# print(barb.color == "Purple")
+# print(rob.say('Fabulous!') == "**;* Fabulous! *;**")
