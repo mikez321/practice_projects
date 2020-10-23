@@ -41,5 +41,6 @@ class SentenceTest(unittest.TestCase):
         self.assertEqual(
             correct_sentence("Greetings, friends"), "Greetings, friends.")
 
+
 if __name__ == '__main__':
     unittest.main()
