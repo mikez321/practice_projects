@@ -2,20 +2,24 @@
 import unittest
 
 
-def correct_sentence(sentence: str) -> str:
+def correct_sentence(text: str) -> str:
     """
     Capitalize the first letter of a sentence and end it with a period.
 
-    :param sentence: A string that may or may not have proper capitalization
+    :param text: A string that may or may not have proper capitalization
         and punctuation.
-    :return: The original sentence string is returned with a capitalized first
-        letter and a period to end it.  If the original sentence has proper
+    :return: The original text string is returned with a capitalized first
+        letter and a period to end it.  If the original text has proper
         punctuation and/or capitalization those will not be altered.
     """
-    if sentence[-1] != '.':
-        sentence += '.'
+    if text[-1] != '.':
+        text += '.'
 
-    return sentence.capitalize()
+    if text[0].isalpha() and text[0].islower():
+        capital_first = text[0].capitalize()
+        text = capital_first + text[1:]
+
+    return text
 
 
 class SentenceTest(unittest.TestCase):
@@ -40,6 +44,11 @@ class SentenceTest(unittest.TestCase):
         """If the sentence is fine it will be unchanged."""
         self.assertEqual(
             correct_sentence("Greetings, friends"), "Greetings, friends.")
+
+    def test_it_will_only_capitalize_the_first_letter(self):
+        """If the sentence has proper nouns, those stay capitalized."""
+        self.assertEqual(
+            correct_sentence("welcome to New York"), "Welcome to New York.")
 
 
 if __name__ == '__main__':
