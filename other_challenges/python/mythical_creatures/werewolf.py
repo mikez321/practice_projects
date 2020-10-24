@@ -5,10 +5,8 @@ class Werewolf:
     """Werewolf object."""
 
     def __init__(self):
-        """Initialize Werewolf object with name and location as properties."""
-        self.name = None
-        self.location = None
-        self.human = True
+        """Initialize Werewolf object with properties."""
+        self.set_defaults()
 
     @property
     def name(self):
@@ -28,10 +26,30 @@ class Werewolf:
     def location(self, value):
         self._location = value
 
-    def is_human(self):
-        """Return attribute of human or not."""
-        return self.human
+    @property
+    def human(self):
+        """Return human property."""
+        return self._human
+
+    @human.setter
+    def human(self, value):
+        self._human = value
+
+    @property
+    def hungry(self):
+        """Getter method for hungry attribute."""
+        return self._hungry
+
+    @hungry.setter
+    def hungry(self, value):
+        self._hungry = value
+
+    def set_defaults(self):
+        """Set default values when werewolf is created."""
+        self._human = True
+        self._hungry = False
 
     def change(self):
         """Toggle human attribute."""
         self.human = not self.human
+        self.hungry = not self.hungry

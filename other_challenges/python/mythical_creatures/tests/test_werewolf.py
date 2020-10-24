@@ -22,7 +22,7 @@ def test_it_is_human_by_default():
     werewolf = Werewolf()
     werewolf.name = 'David'
     werewolf.location = 'London'
-    assert werewolf.is_human() is True
+    assert werewolf.human is True
 
 
 def test_it_can_change_into_a_werewolf():
@@ -31,4 +31,26 @@ def test_it_can_change_into_a_werewolf():
     werewolf.name = 'David'
     werewolf.location = 'London'
     werewolf.change()
-    assert werewolf.is_human() is False
+    assert werewolf.human is False
+
+
+def test_it_can_cange_back_into_human_form():
+    """If a werewolf is in wolf form and changes it becomes human."""
+    werewolf = Werewolf()
+    werewolf.name = 'David'
+    werewolf.location = 'London'
+    assert werewolf.human is True
+    werewolf.change()
+    assert werewolf.human is False
+    werewolf.change()
+    assert werewolf.human is True
+
+
+def test_it_is_hungry_when_it_becomes_a_werewolf():
+    """Werewolves are hungry, humans are not."""
+    werewolf = Werewolf()
+    assert werewolf.human is True
+    assert werewolf.hungry is False
+    werewolf.change()
+    assert werewolf.human is False
+    assert werewolf.hungry is True
