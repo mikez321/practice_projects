@@ -8,6 +8,7 @@ class Werewolf:
         """Initialize Werewolf object with name and location as properties."""
         self.name = None
         self.location = None
+        self.human = True
 
     @property
     def name(self):
@@ -26,3 +27,11 @@ class Werewolf:
     @location.setter
     def location(self, value):
         self._location = value
+
+    def is_human(self):
+        """Return attribute of human or not."""
+        return self.human
+
+    def change(self):
+        """Toggle human attribute."""
+        self.human = not self.human
