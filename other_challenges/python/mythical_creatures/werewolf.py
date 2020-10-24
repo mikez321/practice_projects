@@ -4,52 +4,31 @@
 class Werewolf:
     """Werewolf object."""
 
-    def __init__(self):
+    def __init__(self, name, location):
         """Initialize Werewolf object with properties."""
-        self.set_defaults()
-
-    @property
-    def name(self):
-        """Getter method to return name."""
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        self._name = value
-
-    @property
-    def location(self):
-        """Getter method to return location."""
-        return self._location
-
-    @location.setter
-    def location(self, value):
-        self._location = value
-
-    @property
-    def human(self):
-        """Return human property."""
-        return self._human
-
-    @human.setter
-    def human(self, value):
-        self._human = value
-
-    @property
-    def hungry(self):
-        """Getter method for hungry attribute."""
-        return self._hungry
-
-    @hungry.setter
-    def hungry(self, value):
-        self._hungry = value
-
-    def set_defaults(self):
-        """Set default values when werewolf is created."""
+        self._name = name
+        self._location = location
         self._human = True
         self._hungry = False
 
+    def get_name(self): return self._name
+
+    def set_name(self, name): self._name = name
+
+    def get_location(self): return self._location
+
+    def set_location(self, location): self._location = location
+
+    def get_human(self): return self._human
+
+    def get_hungry(self): return self._hungry
+
+    name = property(get_name, set_name)
+    location = property(get_location, set_location)
+    human = property(get_human)
+    hungry = property(get_hungry)
+
     def change(self):
         """Toggle human attribute."""
-        self.human = not self.human
-        self.hungry = not self.hungry
+        self._human = not self._human
+        self._hungry = not self._hungry
