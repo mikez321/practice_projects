@@ -1,5 +1,6 @@
 """Test Werewolf object."""
 from werewolf import Werewolf
+from werewolf import Victim
 
 
 def test_it_exists():
@@ -46,3 +47,34 @@ def test_it_is_hungry_when_it_becomes_a_werewolf():
     werewolf.change()
     assert werewolf.human is False
     assert werewolf.hungry is True
+
+
+def test_it_can_consume_victims_when_in_werewolf_form():
+    """People can't consume victims, but werewolves can."""
+    werewolf = Werewolf('David', 'London')
+    victim = Victim()
+    assert werewolf.human is True
+    assert werewolf.consume(victim) == "I ain't no savage."
+    werewolf.change()
+    assert werewolf.human is False
+    assert werewolf.consume(victim) == 'Nom Nom Nom'
+
+
+def test_it_is_not_hungry_after_consuming_a_victim():
+    """Werewolves get full when they have consumed a victim."""
+    werewolf = Werewolf('David', 'London')
+    victim = Victim()
+    werewolf.change()
+    assert werewolf.hungry is True
+    werewolf.consume(victim)
+    assert werewolf.hungry is False
+
+
+def test_a_consumed_victims_status_is_dead():
+    """Victims start out alive but die when they are consumed."""
+    werewolf = Werewolf('David', 'London')
+    victim = Victim()
+    assert victim.status == 'alive'
+    werewolf.change()
+    werewolf.consume(victim)
+    assert victim.status == 'dead'

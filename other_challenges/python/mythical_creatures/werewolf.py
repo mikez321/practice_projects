@@ -1,11 +1,11 @@
 """Werewolf object from Turing's Mythical Creatures."""
 
 
-class Werewolf:
+class Werewolf(object):
     """Werewolf object."""
 
     def __init__(self, name, location):
-        """Initialize Werewolf object with properties."""
+        """Initialize Werewolf object with hidden properties."""
         self._name = name
         self._location = location
         self._human = True
@@ -32,3 +32,26 @@ class Werewolf:
         """Toggle human attribute."""
         self._human = not self._human
         self._hungry = not self._hungry
+
+    def consume(self, prey):
+        """Werewolf can consume victims."""
+        if self._human is True:
+            return "I ain't no savage."
+        else:
+            self._hungry = not self._hungry
+            prey.set_status('dead')
+            return 'Nom Nom Nom'
+
+
+class Victim(object):
+    """Victim object to interact with werewolf."""
+
+    def __init__(self):
+        """Initialize a new victim object with a status of alive."""
+        self._status = 'alive'
+
+    def get_status(self): return self._status
+
+    def set_status(self, status): self._status = status
+
+    status = property(get_status, set_status)
