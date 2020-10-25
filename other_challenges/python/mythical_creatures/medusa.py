@@ -23,7 +23,13 @@ class Medusa(object):
             this method will be added to the medusa's collection of statues
             and its property of being stoned will be set to true.
         :return: No return value is produced from this method.
+        :note: A Medusa can only have 3 statues at a time.  The fourth statue
+            will set the first one free!
         """
+        if len(self._statues) == 3:
+            self._statues[0].set_stoned(False)
+            self._statues = self._statues[1:]
+
         victim.stoned = True
         self._statues.append(victim)
 
