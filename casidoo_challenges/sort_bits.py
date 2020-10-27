@@ -70,6 +70,20 @@ def place(num: int, num_list: list) -> list:
             return num_list[:place_index] + [num] + num_list[place_index:]
 
 
+def order_list(num_list: list) -> list:
+    """
+    Return a list of ints in ascending order.
+
+    :param num_list: A list of ints in any order.
+    :return: The original list of numbers in ascending order.
+    """
+    ordered_list = []
+    for num in num_list:
+        ordered_list = place(num, ordered_list)
+
+    return ordered_list
+
+
 class SortBitsTest(unittest.TestCase):
     """Testing for sortBits function."""
 
@@ -96,6 +110,10 @@ class SortBitsTest(unittest.TestCase):
         self.assertEqual(place(9, [3]), [3, 9])
         self.assertEqual(place(1, [3, 9]), [1, 3, 9])
         self.assertEqual(place(7, [1, 3, 9]), [1, 3, 7, 9])
+
+    def test_it_can_sort_a_list_of_ints(self):
+        """It can arrange a list of ints in ascending order."""
+        self.assertEqual(order_list([3, 9, 21, 1, 0]), [0, 1, 3, 9, 21])
 
 
 if __name__ == '__main__':
