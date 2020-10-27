@@ -15,8 +15,7 @@ def sort_bits(nums: list) -> list:
     """
     num_collection = {}
     result = []
-    nums.sort()
-    for num in nums:
+    for num in order_list(nums):
         if to_binary(num).count('1') in num_collection.keys():
             num_collection[to_binary(num).count('1')].append(num)
         else:
