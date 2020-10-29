@@ -10,10 +10,18 @@ def bigger_price(quantity: int, items: list) -> list:
     :param items: A list of dictionaries.  The name and price of each item.
     :return: A list is returned with the name and price of the most
         expensive items.  The number of items in this list is determined by
-        the quanity param and the items in the list will be returned in
+        the quantity param and the items in the list will be returned in
         decreasing order, with the first being the most expensive item in the
         complete list of items.
     """
+    result = []
+    for item in items:
+        if len(result) == 0:
+            result.append(item)
+        elif result[0]['price'] < item['price']:
+            result = [item] + result
+
+    return result[:quantity]
 
 
 class PriceTest(unittest.TestCase):
@@ -27,7 +35,7 @@ class PriceTest(unittest.TestCase):
         ]
 
         self.assertEqual(
-            bigger_price(1, items), {'name': 'whiteboard', 'price': 170}
+            bigger_price(1, items), [{'name': 'whiteboard', 'price': 170}]
             )
 
 
