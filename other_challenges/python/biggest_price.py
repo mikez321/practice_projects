@@ -60,18 +60,41 @@ class PriceTest(unittest.TestCase):
 
         self.assertEqual(
             bigger_price(2, items), [
-                    {'name': 'dog', 'price': 500},
-                    {'name': 'whiteboard', 'price': 170},
-                ]
-            )
+                {'name': 'dog', 'price': 500},
+                {'name': 'whiteboard', 'price': 170},
+            ]
+        )
 
         self.assertEqual(
             bigger_price(3, items), [
-                    {'name': 'dog', 'price': 500},
-                    {'name': 'whiteboard', 'price': 170},
-                    {'name': 'pen', 'price': 5}
-                ]
-            )
+                {'name': 'dog', 'price': 500},
+                {'name': 'whiteboard', 'price': 170},
+                {'name': 'pen', 'price': 5}
+            ]
+        )
+
+    def test_it_works_with_more_items_and_quantities(self):
+        """Larger data sets work fine."""
+        items = [
+            {'name': 'apple', 'price': 2},
+            {'name': 'cheese', 'price': 6},
+            {'name': 'milk', 'price': 4},
+            {'name': 'burrito', 'price': 6},
+            {'name': 'soda', 'price': 10},
+            {'name': 'beer', 'price': 20},
+            {'name': 'chips', 'price': 2},
+            {'name': 'pizza', 'price': 12},
+            {'name': 'wine', 'price': 15},
+        ]
+
+        self.assertEqual(
+            bigger_price(4, items), [
+                {'name': 'beer', 'price': 20},
+                {'name': 'wine', 'price': 15},
+                {'name': 'pizza', 'price': 12},
+                {'name': 'soda', 'price': 10},
+            ]
+        )
 
 
 if __name__ == '__main__':
