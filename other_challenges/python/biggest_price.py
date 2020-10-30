@@ -15,11 +15,22 @@ def bigger_price(quantity: int, items: list) -> list:
         complete list of items.
     """
     result = []
+
     for item in items:
         if len(result) == 0:
             result.append(item)
         elif result[0]['price'] < item['price']:
             result = [item] + result
+        elif result[-1]['price'] > item['price']:
+            result.append(item)
+        else:
+            for index, placed_item in enumerate(result):
+                if placed_item['price'] > item['price']:
+                    continue
+                else:
+                    new_index = index
+                    result = (result[:new_index] + [item] + result[new_index:])
+                    break
 
     return result[:quantity]
 
@@ -36,6 +47,30 @@ class PriceTest(unittest.TestCase):
 
         self.assertEqual(
             bigger_price(1, items), [{'name': 'whiteboard', 'price': 170}]
+            )
+
+    def test_it_can_return_a_list_of_n_items(self):
+        """It will return n quantity of items ordered by price."""
+        items = [
+            {'name': 'pen', 'price': 5},
+            {'name': 'asparagus', 'price': 2},
+            {'name': 'dog', 'price': 500},
+            {'name': 'whiteboard', 'price': 170},
+        ]
+
+        self.assertEqual(
+            bigger_price(2, items), [
+                    {'name': 'dog', 'price': 500},
+                    {'name': 'whiteboard', 'price': 170},
+                ]
+            )
+
+        self.assertEqual(
+            bigger_price(3, items), [
+                    {'name': 'dog', 'price': 500},
+                    {'name': 'whiteboard', 'price': 170},
+                    {'name': 'pen', 'price': 5}
+                ]
             )
 
 
