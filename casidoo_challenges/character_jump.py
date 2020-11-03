@@ -27,7 +27,6 @@ class CharacterJumpTest(unittest.TestCase):
         """True if it hits no obstacles."""
         self.assertEqual(character_jump(3, [0, 1, 0, 0, 0, 1, 0]), True)
 
-    @unittest.skip('Pass first then fail.')
     def test_it_fails_if_it_hits_an_object(self):
         """False if it hits an obstacle."""
         self.assertEqual(character_jump(4, [0, 1, 1, 0, 1, 0, 0, 0, 0]), False)
