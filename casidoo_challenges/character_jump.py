@@ -14,6 +14,10 @@ def character_jump(skips: int, course: list) -> bool:
         an obstacle, the function returns true.  If at any time the character
         will hit an obstacle, the function will return false.
     """
+    if 1 in course[::skips]:
+        return False
+
+    return True
 
 
 class CharacterJumpTest(unittest.TestCase):
