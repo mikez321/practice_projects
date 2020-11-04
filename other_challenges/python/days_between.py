@@ -25,10 +25,19 @@ def days_diff(date1: tuple, date2: tuple) -> int:
         11: 30,
         12: 31,
     }
+
     y1, m1, d1 = date1
-    days1 = y1 * 365 + months[m1] + d1
+    elapsed_days = 0
+    for month in months.keys():
+        if m1 > month:
+            elapsed_days += months[month]
+    days1 = y1 * 365 + elapsed_days + d1
 
     y2, m2, d2 = date2
-    days2 = y2 * 365 + months[m2] + d2
+    elapsed_days = 0
+    for month in months.keys():
+        if m2 > month:
+            elapsed_days += months[month]
+    days2 = y2 * 365 + elapsed_days + d2
 
     return abs(days1 - days2)
