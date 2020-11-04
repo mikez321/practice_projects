@@ -28,6 +28,10 @@ def days_diff(date1: tuple, date2: tuple) -> int:
 
     y1, m1, d1 = date1
     elapsed_days = 0
+    for year in range(1, y1 + 1):
+        if year % 4 == 0:
+            elapsed_days += 1
+
     for month in months.keys():
         if m1 > month:
             elapsed_days += months[month]
@@ -35,6 +39,9 @@ def days_diff(date1: tuple, date2: tuple) -> int:
 
     y2, m2, d2 = date2
     elapsed_days = 0
+    for year in range(1, y2 + 1):
+        if year % 4 == 0:
+            elapsed_days += 1
     for month in months.keys():
         if m2 > month:
             elapsed_days += months[month]
