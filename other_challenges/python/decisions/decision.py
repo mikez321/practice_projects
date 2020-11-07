@@ -31,3 +31,19 @@ class Decision(object):
             self.choices.
         """
         self.choices[choice].append(res)
+
+    def winner(self):
+        """
+        Find the choice with the most responses.
+
+        :return: This looks through all choices and returns the one with the
+            most responses.
+        """
+        most_comments = 0
+        winner = None
+        for choice in self.choices:
+            if len(self.choices[choice]) > most_comments:
+                most_comments = len(self.choices[choice])
+                winner = choice
+
+        return winner
