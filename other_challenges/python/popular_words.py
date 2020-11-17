@@ -13,6 +13,16 @@ def popular_words(text: str, words: list) -> dict:
         provided in the 'words' param and the values being the frequency that
         word appears in the given 'text' param.
     """
+    result = {}
+    text = text.casefold()
+    for word in words:
+        result[word] = 0
+
+    for text_word in text.split():
+        if text_word in words:
+            result[text_word] += 1
+
+    return result
 
 
 class PopularWordsTest(unittest.TestCase):
