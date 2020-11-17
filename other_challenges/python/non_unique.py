@@ -10,7 +10,13 @@ def non_uniques(elems: list) -> list:
     :return: The elements in the original list are returned but if they are
         unique, they will be eliminated from the returned list.
     """
+    item_index = range(len(elems))[::-1]
 
+    for index in item_index:
+        if elems.count(elems[index]) == 1:
+            del(elems[index])
+
+    return elems
 
 
 class NonUniqueTest(unittest.TestCase):
