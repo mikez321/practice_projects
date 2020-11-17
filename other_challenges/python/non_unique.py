@@ -25,6 +25,10 @@ class NonUniqueTest(unittest.TestCase):
     def test_it_returns_only_non_unique_elements(self):
         """Return a list of the non-unique elements of a given list."""
         self.assertEqual(non_uniques([1, 2, 3, 1, 3]), [1, 3, 1, 3])
+        self.assertEqual(non_uniques([1, 2, 3, 4, 5]), [])
+        self.assertEqual(non_uniques([5, 5, 5, 5, 5]), [5, 5, 5, 5, 5])
+        self.assertEqual(
+            non_uniques([10, 9, 10, 10, 9, 8]), [10, 9, 10, 10, 9])
 
 
 if __name__ == '__main__':
