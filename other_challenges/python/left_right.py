@@ -2,7 +2,7 @@
 import unittest
 
 
-def left_join(phrases: tuple) -> str:
+def left_join(phrases: tuple, replacement_word: str = "right") -> str:
     """
     Return a single string from a tuple of strings.
 
@@ -16,9 +16,9 @@ def left_join(phrases: tuple) -> str:
     """
     result = []
     for word in phrases:
-        if 'right' in word:
-            start_chop = word.index('right')
-            end_chop = start_chop + len('right')
+        if replacement_word in word:
+            start_chop = word.index(replacement_word)
+            end_chop = start_chop + len(replacement_word)
             left_word = word[:start_chop] + 'left' + word[end_chop:]
             result.append(left_word)
         else:
