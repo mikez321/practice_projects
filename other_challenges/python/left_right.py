@@ -2,13 +2,11 @@
 import unittest
 
 
-def left_join(phrases: tuple, replacement_word: str = "right") -> str:
+def left_join(phrases: tuple) -> str:
     """
     Return a single string from a tuple of strings.
 
     :param prhases:  A tuple of strings
-    :param replacement_word: The word that will be replaced if it exists in
-        phrases.  Default value is 'right'.
     :return: All strings returned as a single, comma separated string.
         However, in the return, any instance of 'right' should be replaced
         with 'left' even if it is in the middle of a word.
@@ -17,27 +15,41 @@ def left_join(phrases: tuple, replacement_word: str = "right") -> str:
         >>> "bleft aleft,ok"
     """
     result = []
-    for word in phrases:
-        if replacement_word in word:
-            start_chop = word.index(replacement_word)
-            end_chop = start_chop + len(replacement_word)
-            left_word = word[:start_chop] + 'left' + word[end_chop:]
-            result.append(left_word)
-        else:
-            result.append(word)
+    pass
 
-    return ",".join(result)
+
+def replace_right(word):
+    """Replace any instance of 'right' with 'left'."""
+    if 'right' in word:
+        start_chop = word.index('right')
+        end_chop = start_chop + len('right')
+        new_word = word[:start_chop] + 'left' + word[end_chop:]
+        return replace_right(new_word)
+    else:
+        return word
 
 
 class LeftRightTest(unittest.TestCase):
     """Testing for leftright function."""
 
+    def test_it_replaces_words(self):
+        """It replaces the word right with the word left."""
+        self.assertEqual(replace_right('right'), 'left')
+
+    def test_it_replaces_right_multiple_times(self):
+        """It can replace right more than once per word."""
+        self.assertEqual(
+            replace_right('alright rightoh right on'), 'alleft leftoh left on'
+        )
+
+    @unittest.skip('test recursive function first')
     def test_it_messes_up_instructions(self):
         """It replaced "left" for any instance of the word "right"."""
         self.assertEqual(
             left_join(("left", "right", "left", "stop")), "left,left,left,stop"
         )
 
+    @unittest.skip('test recursive function first')
     def test_it_can_replace_part_of_a_word(self):
         """It can replace part of a word."""
         self.assertEqual(
