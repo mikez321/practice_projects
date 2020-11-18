@@ -59,6 +59,13 @@ class LeftRightTest(unittest.TestCase):
         self.assertEqual(
             left_join(("bright aright", "ok")), "bleft aleft,ok"
         )
+        self.assertEqual(
+            left_join(("brightness wright",)), "bleftness wleft"
+        )
+
+        self.assertEqual(
+            left_join(("enough", "jokes")), "enough,jokes"
+        )
 
 
 if __name__ == '__main__':
