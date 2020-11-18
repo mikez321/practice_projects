@@ -24,8 +24,15 @@ def left_join(phrases: tuple) -> str:
     return ",".join(result)
 
 
-def replace_right(word):
-    """Replace any instance of 'right' with 'left'."""
+def replace_right(word: str) -> str:
+    """
+    Replace any instance of 'right' with 'left'.
+
+    :param word: Any string which could or could not include 'right' somewhere
+        in it.
+    :return: Recursive function will cycle until it replaces all instances of
+        the word 'right' with the word 'left'.
+    """
     if 'right' in word:
         start_chop = word.index('right')
         end_chop = start_chop + len('right')
