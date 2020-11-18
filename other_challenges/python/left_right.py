@@ -14,6 +14,17 @@ def left_join(phrases: tuple) -> str:
         left_join(("bright aright", "ok"))
         >>> "bleft aleft,ok"
     """
+    result = []
+    for word in phrases:
+        if 'right' in word:
+            start_chop = word.index('right')
+            end_chop = start_chop + len('right')
+            left_word = word[:start_chop] + 'left' + word[end_chop:]
+            result.append(left_word)
+        else:
+            result.append(word)
+
+    return ",".join(result)
 
 
 class LeftRightTest(unittest.TestCase):
@@ -22,7 +33,7 @@ class LeftRightTest(unittest.TestCase):
     def test_it_messes_up_instructions(self):
         """First test for leftright function."""
         self.assertEqual(
-            left_join("left", "right", "left", "stop"), "left,left,left,stop")
+            left_join(("left", "right", "left", "stop")), "left,left,left,stop")
 
 
 if __name__ == '__main__':
