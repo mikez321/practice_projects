@@ -1,24 +1,26 @@
 # Practice Projects
-This is a repo for doing random practice projects, code challenges and things like that so I'm not just sitting around forgetting everything I learned this year!  It is getting a little full so here's a quick rundown of what it contains:
+This repo holds ~~all~~ most of the work I have done since graduating from the [Turing School of Software and Design](https://turing.io/). Below is a brief description of what you can find here:
 
-__Turing Projects__
+### Turing Project: Linked List
+We had briefly touched on this project during my time at Turing but it wasn't until I graduated I had time to complete it.  It explores the linked list data structure.  It is built using Ruby and Minitest for testing.
 
-I completed a few extra Turing projects.  I built a linked list based on the Oregon Trail game, and then built a Binary Search Tree.  I also explored the Trie data structure by building the foundation of an autocomplete program.  (As a bonus I used quite a bit of recursion in that one!).  All of those projects were done in Ruby and built using TDD with Minitest.
+### Turing Project: Binary Search
+Similar to linked list, this is a Turing project which builds a binary search data structure.  Again, Minitest and Ruby were used when completing this project.
 
-The idea behind using Ruby for all of these is that I was learning new data types and concepts and wanted to figure those out and get used to writing code again.
+### Turing Project: Complete Me
+The final Turing project I completed was a retrieval tree (trie) data structure by building an autocomplete system.  The biggest accomplishment I had during this project was really getting my head around recursion.  As with all other Turing Projects, this was built with Minitest and Ruby.
 
-__Casidoo Challenges__
+### Casidoo Challenges
+I subscribe to Cassidy Williams' newsletter and started doing her little code challenges for fun.  I started doing these with Ruby/Minitest, but after learning more Python, I did quite a few of them in Python and testing with Unittest or Pytest.
 
-I subscribe to Cassidy Williams' newsletter and started doing her little code challenges for fun.  I again did them using Ruby and Minitest.
+### Other Challenges
+These are code challenges I found on the internet, had during job interviews, or are from [check.io](https://checkio.org/).  Of note in here is a folder called [fizzbuzz_objects](https://github.com/mikez321/practice_projects/tree/main/other_challenges/fizzbuzz_objects).  I had done Fizzbuzz in some really easy ways, but wanted to do it in a slightly more elegant way.  In this version, every number of Fizzbuzz is an object and each object "shouts" out its number, fizz, buzz, or fizzbuzz.
 
-__Other Challenges__
+### All your Rebase
+Git Rebase practice.  I got much more comfortable using interactive rebase to fix minor commits ('Capitalize first letter of readme' types of commits) and also practiced rebase workflow instead of merge.
 
-Just random things I found on the internet.
+### Python Things
+I bought a Udemy course for Python and spent 3 weeks learning how the language worked.  It was my first attempt at learning a new language and I got to apply everything I learned in Ruby to quickly pick up Python.
 
-__All your Rebase__
-
-Here I did some practice work with Rebasing.  It really set me up for success later on and after doing this project I started squashing commits and rewording things all over the place.  No more stupid "Fix readme typo" or "Undo change" immediately followed by "Redo change" commits!  Yay!  As an added bonus, I inadvertently created an annoying merge conflict so I got to merge conflict and put out a git fire at the same time as rebasing!
-
-__Python Things__
-
-After a little bit, I decided to go ahead and learn some Python for real.  I wrote an API (Oh Crop!) in Python Flask, but haven't done any Python coding in a while.  When I was asked if I could do a code challenge in Python and had to be like... "Oh, no." it made me realize I should probably spend some real time with it and bought a Udemy course.  It starts off pretty basic with "Hello, World!" but in the interest of getting the most out of it I'm going through it from the beginning and not just assuming I should jump into the deep end.  Its a little boring at first, but I'm sure it will get more challenging as I go on! 
+### Waterdrops Exploration
+A quick revisit of Rails.  All this really did was remind me how Rails worked, revisit concepts like routes and gemfiles.  In the end I got a homepage working with an embeded google map.  It was also the first time I had implemented (or heard of) Git Submodules.
