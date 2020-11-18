@@ -15,7 +15,13 @@ def left_join(phrases: tuple) -> str:
         >>> "bleft aleft,ok"
     """
     result = []
-    pass
+    for word in phrases:
+        if 'right' in word:
+            result.append(replace_right(word))
+        else:
+            result.append(word)
+
+    return ",".join(result)
 
 
 def replace_right(word):
@@ -42,14 +48,12 @@ class LeftRightTest(unittest.TestCase):
             replace_right('alright rightoh right on'), 'alleft leftoh left on'
         )
 
-    @unittest.skip('test recursive function first')
     def test_it_messes_up_instructions(self):
         """It replaced "left" for any instance of the word "right"."""
         self.assertEqual(
             left_join(("left", "right", "left", "stop")), "left,left,left,stop"
         )
 
-    @unittest.skip('test recursive function first')
     def test_it_can_replace_part_of_a_word(self):
         """It can replace part of a word."""
         self.assertEqual(
