@@ -2,7 +2,7 @@
 import unittest
 
 
-def second_index(text: str, target: str) -> int:
+def second_index(text: str, target: str) -> [int, None]:
     """
     Return the index of the second instance of a given character.
 
@@ -14,16 +14,12 @@ def second_index(text: str, target: str) -> int:
         function will return None.
     """
     ind1 = None
-    ind2 = None
 
     for index, char in enumerate(text):
         if char.casefold() == target.casefold() and ind1 is None:
             ind1 = index
         elif char.casefold() == target.casefold() and ind1 is not None:
-            ind2 = index
-            break
-
-    return ind2
+            return(index)
 
 
 class QuestionMarkTest(unittest.TestCase):
