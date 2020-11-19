@@ -21,6 +21,7 @@ def second_index(text: str, target: str) -> int:
             ind1 = index
         elif char.casefold() == target.casefold() and ind1 is not None:
             ind2 = index
+            break
 
     return ind2
 
@@ -33,6 +34,7 @@ class QuestionMarkTest(unittest.TestCase):
         self.assertEqual(second_index("sims", "s"), 3)
         self.assertEqual(second_index("find the river", "e"), 12)
         self.assertEqual(second_index("hi", " "), None)
+        self.assertEqual(second_index("three occurrences", "r"), 10)
 
 
 if __name__ == '__main__':
