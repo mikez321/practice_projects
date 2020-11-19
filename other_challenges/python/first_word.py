@@ -19,7 +19,9 @@ def first_word(text: str) -> str:
             break
 
     for index, char in enumerate(first_word):
-        if char.isalpha() or char == "'":
+        if char.isalpha():
+            continue
+        elif char == "'":
             continue
         else:
             first_word = first_word[:index]
@@ -34,6 +36,8 @@ def first_word(text: str) -> str:
     for index in reversed(range(0, indexes)):
         if first_word[index].isalpha() is False:
             del first_word[index]
+        else:
+            break
 
     return "".join(first_word)
 
@@ -57,7 +61,6 @@ class FirstWordTest(unittest.TestCase):
         """It can remove a period joining two words."""
         self.assertEqual(first_word("Hello.World"), "Hello")
 
-    @unittest.skip("see if the others work first")
     def test_apostrophes_are_ok(self):
         """A word can have an apostrophe."""
         self.assertEqual(first_word("That's great!"), "That's")
