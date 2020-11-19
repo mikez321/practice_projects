@@ -13,13 +13,13 @@ def second_index(text: str, target: str) -> [int, None]:
         returned.  If there is not a second instance of this character the
         function will return None.
     """
-    ind1 = None
+    found = 0
 
     for index, char in enumerate(text):
-        if char.casefold() == target.casefold() and ind1 is None:
-            ind1 = index
-        elif char.casefold() == target.casefold() and ind1 is not None:
+        if char.casefold() == target.casefold() and found == 1:
             return(index)
+        elif char.casefold() == target.casefold():
+            found += 1
 
 
 class QuestionMarkTest(unittest.TestCase):
