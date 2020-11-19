@@ -22,6 +22,10 @@ class FirstWordTest(unittest.TestCase):
         """Function returns the first word of a given string."""
         self.assertEqual(first_word("Hello world"), "Hello")
 
+    def test_it_removes_starting_or_ending_punctuation(self):
+        """Remove comma at end of this example."""
+        self.assertEqual(first_word("greetings, friends"), "greetings")
+
 
 if __name__ == '__main__':
     unittest.main()
