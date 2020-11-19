@@ -31,6 +31,8 @@ class QuestionMarkTest(unittest.TestCase):
     def test_it_returns_the_second_index_of_the_char(self):
         """It will return the second index of a given character."""
         self.assertEqual(second_index("sims", "s"), 3)
+        self.assertEqual(second_index("find the river", "e"), 12)
+        self.assertEqual(second_index("hi", " "), None)
 
 
 if __name__ == '__main__':
