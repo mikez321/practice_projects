@@ -19,9 +19,7 @@ def first_word(text: str) -> str:
             break
 
     for index, char in enumerate(first_word):
-        if char.isalpha():
-            continue
-        elif char == "'":
+        if char.isalpha() or char == "'":
             continue
         else:
             first_word = first_word[:index]
