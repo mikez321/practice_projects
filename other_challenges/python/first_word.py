@@ -11,7 +11,17 @@ def first_word(text: str) -> str:
         apostrophe and it is part of the word it should be included.  Erroneous
         punctuation before or after a word should be removed.
     """
-    first_word = list(text.split()[0])
+    first_word = None
+
+    for word in text.split():
+        if word[0].isalpha():
+            first_word = list(word)
+            break
+
+    for index, char in enumerate(first_word):
+        if char.isalpha():
+            first_word = first_word[index:]
+            break
 
     indexes = len(first_word)
 
@@ -33,9 +43,9 @@ class FirstWordTest(unittest.TestCase):
         """Remove comma at end of this example."""
         self.assertEqual(first_word("greetings, friends"), "greetings")
 
-    # def test_it_can_remove_lots_of_punctuation(self):
-    #     """It can remove lots of punctuation on either side."""
-    #     self.assertEqual(first_word("... and so on ..."), "and")
+    def test_it_can_remove_lots_of_punctuation(self):
+        """It can remove lots of punctuation on either side."""
+        self.assertEqual(first_word("... and so on ..."), "and")
 
 
 if __name__ == '__main__':
