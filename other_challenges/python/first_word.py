@@ -11,33 +11,18 @@ def first_word(text: str) -> str:
         apostrophe and it is part of the word it should be included.  Erroneous
         punctuation before or after a word should be removed.
     """
-    first_word = None
-
-    for word in text.split():
-        if word[0].isalpha():
-            first_word = list(word)
-            break
-
-    for index, char in enumerate(first_word):
-        if char.isalpha() or char == "'":
+    text = list(text)
+    for index, char in enumerate(text):
+        if char == "'" or char.isalpha():
             continue
         else:
-            first_word = first_word[:index]
+            text[index] = '.'
 
-    for index, char in enumerate(first_word):
-        if char.isalpha():
-            first_word = first_word[index:]
-            break
+    text = "".join(text).split('.')
 
-    indexes = len(first_word)
-
-    for index in reversed(range(0, indexes)):
-        if first_word[index].isalpha() is False:
-            del first_word[index]
-        else:
-            break
-
-    return "".join(first_word)
+    for item in text:
+        if item != '':
+            return(item)
 
 
 class FirstWordTest(unittest.TestCase):
