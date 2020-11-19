@@ -11,8 +11,12 @@ def first_word(text: str) -> str:
         apostrophe and it is part of the word it should be included.  Erroneous
         punctuation before or after a word should be removed.
     """
-    words = text.split()
-    return words[0]
+    first_word = text.split()[0]
+
+    if first_word[-1].isalpha() is False:
+        first_word = first_word[:len(first_word) - 1]
+
+    return first_word
 
 
 class FirstWordTest(unittest.TestCase):
