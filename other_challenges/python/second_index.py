@@ -2,18 +2,27 @@
 import unittest
 
 
-def second_index(text: str, char: str) -> int:
+def second_index(text: str, target: str) -> int:
     """
     Return the index of the second instance of a given character.
 
     :param text: Any string of text, numbers, characters.
-    :char: The 'target' character.  The function will give the index of the
+    :target: The 'target' character.  The function will give the index of the
         second occurance of this character.
-    :return: The index position of the second instance of the char will be
+    :return: The index position of the second instance of the target will be
         returned.  If there is not a second instance of this character the
         function will return None.
     """
-    pass
+    ind1 = None
+    ind2 = None
+
+    for index, char in enumerate(text):
+        if char.casefold() == target.casefold() and ind1 is None:
+            ind1 = index
+        elif char.casefold() == target.casefold() and ind1 is not None:
+            ind2 = index
+
+    return ind2
 
 
 class QuestionMarkTest(unittest.TestCase):
@@ -21,7 +30,7 @@ class QuestionMarkTest(unittest.TestCase):
 
     def test_it_returns_the_second_index_of_the_char(self):
         """It will return the second index of a given character."""
-        pass
+        self.assertEqual(second_index("sims", "s"), 3)
 
 
 if __name__ == '__main__':
