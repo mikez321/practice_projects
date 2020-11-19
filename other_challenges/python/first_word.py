@@ -19,6 +19,12 @@ def first_word(text: str) -> str:
             break
 
     for index, char in enumerate(first_word):
+        if char.isalpha() or char == "'":
+            continue
+        else:
+            first_word = first_word[:index]
+
+    for index, char in enumerate(first_word):
         if char.isalpha():
             first_word = first_word[index:]
             break
@@ -46,6 +52,15 @@ class FirstWordTest(unittest.TestCase):
     def test_it_can_remove_lots_of_punctuation(self):
         """It can remove lots of punctuation on either side."""
         self.assertEqual(first_word("... and so on ..."), "and")
+
+    def test_periods_are_not_ok(self):
+        """It can remove a period joining two words."""
+        self.assertEqual(first_word("Hello.World"), "Hello")
+
+    @unittest.skip("see if the others work first")
+    def test_apostrophes_are_ok(self):
+        """A word can have an apostrophe."""
+        self.assertEqual(first_word("That's great!"), "That's")
 
 
 if __name__ == '__main__':
