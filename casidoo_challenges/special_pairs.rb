@@ -3,18 +3,15 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 def special_pairs(nums)
-  pairs = []
   special_pairs = []
   indexes = (0.. nums.length - 1)
 
   indexes.each do |ind1|
     indexes.each do |ind2|
-      ind1 < ind2 ? pairs << [ind1, ind2] : next
+      if ind1 < ind2 && nums[ind1] == nums[ind2]
+        special_pairs << [ind1, ind2]
+      end
     end
-  end
-
-  pairs.each do |pair|
-    nums[pair.first] == nums[pair.last] ? special_pairs << pair : next
   end
 
   special_pairs.length
