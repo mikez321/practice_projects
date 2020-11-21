@@ -16,7 +16,7 @@ def split_list(items: list) -> list:
     split = (len(items) // 2) * -1
     first_half = items[:split]
     second_half = items[len(items) - 1:split - 1:-1]
-    
+
     return [first_half, second_half[::-1]]
 
 
