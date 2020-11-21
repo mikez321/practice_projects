@@ -13,6 +13,11 @@ def split_list(items: list) -> list:
         If the original list has an odd number of items, the first list will
         contain one more item than the second.
     """
+    split = (len(items) // 2) * -1
+    first_half = items[:split]
+    second_half = items[len(items) - 1:split - 1:-1]
+    
+    return [first_half, second_half[::-1]]
 
 
 class SplitListTest(unittest.TestCase):
