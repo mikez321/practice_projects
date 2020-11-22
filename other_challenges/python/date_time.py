@@ -7,6 +7,47 @@ def format_day(day: str) -> str:
     return(str(int(day)))
 
 
+def format_month(month: str) -> str:
+    """Return the name of the month that matches its number."""
+    months = {
+        1: 'January',
+        2: 'February',
+        3: 'March',
+        4: 'April',
+        5: 'May',
+        6: 'June',
+        7: 'July',
+        8: 'August',
+        9: 'September',
+        10: 'October',
+        11: 'November',
+        12: 'December',
+    }
+    return months[int(month)]
+
+
+def format_year(year: str) -> str:
+    """Remove prepended zeros from year and add word 'year'."""
+    return str(int(year)) + ' year'
+
+
+def format_hour(hour: str) -> str:
+    """Return a properly formatted version of the hours given as a string."""
+    hour = int(hour)
+    if hour == 1:
+        return str(hour) + ' hour'
+    else:
+        return str(hour) + ' hours'
+
+
+def format_minute(minute: str) -> str:
+    """Return a properly formatted version of the minutes given as a string."""
+    minute = int(minute)
+    if minute == 1:
+        return str(minute) + ' minute'
+    else:
+        return str(minute) + ' minutes'
+
 
 def date_time(date_time: str) -> str:
     """
@@ -21,50 +62,17 @@ def date_time(date_time: str) -> str:
         minute, but 'hours' and 'minutes' for times like
         '2 hours and 25 minutes.'
     """
-    months = {
-        '01': 'January',
-        '02': 'February',
-        '03': 'March',
-        '04': 'April',
-        '05': 'May',
-        '06': 'June',
-        '07': 'July',
-        '08': 'August',
-        '09': 'September',
-        '10': 'October',
-        '11': 'November',
-        '12': 'December',
-    }
-
     date = date_time.split()[0]
-    day = date.split('.')[0]
-    month = months[date.split('.')[1]]
-    year = date.split('.')[-1]
-
-    if day[0] == '0':
-        day = day[1:]
-
     time = date_time.split()[-1]
-    minutes = time.split(':')[-1]
-    hours = time.split(':')[0]
+    formatted_date = [
+        format_day(date.split('.')[0]),
+        format_month(date.split('.')[1]),
+        format_year(date.split('.')[2]),
+        format_hour(time.split(':')[0]),
+        format_minute(time.split(':')[1]),
+    ]
 
-    if minutes[0] == '0':
-        minutes = minutes[1:]
-
-    if hours[0] == '0':
-        hours = hours[1:]
-
-    if minutes == '1':
-        minutes = minutes + ' minute'
-    else:
-        minutes = minutes + ' minutes'
-
-    if hours == '1':
-        hours = hours + ' hour'
-    else:
-        hours = hours + ' hours'
-
-    return day + ' ' + month + ' ' + year + ' year ' + hours + ' ' + minutes
+    return " ".join(formatted_date)
 
 
 class DateTimeTest(unittest.TestCase):
@@ -73,6 +81,30 @@ class DateTimeTest(unittest.TestCase):
     def test_it_can_return_a_day_with_or_without_zeros(self):
         """Days with leading zeros will be returned as just the number."""
         self.assertEqual(format_day('01'), '1')
+        self.assertEqual(format_day('31'), '31')
+
+    def test_it_returns_the_name_of_a_month(self):
+        """Given a number, it will return that month."""
+        self.assertEqual(format_month('01'), 'January')
+        self.assertEqual(format_month('11'), 'November')
+
+    def test_it_properly_formats_a_year(self):
+        """Years prepended with zeros will be retuned without the zeros."""
+        self.assertEqual(format_year('2000'), '2000 year')
+        self.assertEqual(format_year('1998'), '1998 year')
+        self.assertEqual(format_year('0041'), '41 year')
+
+    def test_it_properly_formats_hours(self):
+        """Return hour without leading zeros and proper version of 'hour'."""
+        self.assertEqual(format_hour('00'), '0 hours')
+        self.assertEqual(format_hour('01'), '1 hour')
+        self.assertEqual(format_hour('11'), '11 hours')
+
+    def test_it_properly_formats_minutes(self):
+        """Return mins without leading zeros and proper version of 'hour'."""
+        self.assertEqual(format_minute('00'), '0 minutes')
+        self.assertEqual(format_minute('01'), '1 minute')
+        self.assertEqual(format_minute('11'), '11 minutes')
 
     def test_it_can_return_a_human_readable_date(self):
         """Given date as numbers, it can spell it out in normal format."""
