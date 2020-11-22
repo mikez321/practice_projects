@@ -71,6 +71,16 @@ class DateTimeTest(unittest.TestCase):
             "1 January 2000 year 0 hours 0 minutes"
         )
 
+        self.assertEqual(
+            date_time("19.09.2999 01:59"),
+            "19 September 2999 year 1 hour 59 minutes"
+        )
+
+        self.assertEqual(
+            date_time("21.10.1999 18:01"),
+            "21 October 1999 year 18 hours 1 minute"
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
