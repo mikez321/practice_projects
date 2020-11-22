@@ -2,13 +2,19 @@
 import unittest
 
 
+def format_day(day: str) -> str:
+    """Remove prepended zeros from a day."""
+    return(str(int(day)))
+
+
+
 def date_time(date_time: str) -> str:
     """
     Convert number time to human readable time.
 
     :param date_time: A string of numbers representing a date and time in the
         format DD.MM.YYYY HH:MM  (ex: '01.01.2000 12:30' representing
-        1 January 2000, 12:30 PM)  *Time will be 24hour format.
+        1 January 2000, 12:30 PM)  *Time will be 24 hour format.
     :return: A human readable version of the date and time will be returned in
         the format of '1 January 2000 year 1 hour 59 minutes'  *Note that time
         will be referred to as 'hour' and 'minute' for a single hour or single
@@ -63,6 +69,10 @@ def date_time(date_time: str) -> str:
 
 class DateTimeTest(unittest.TestCase):
     """Testing for date_time function."""
+
+    def test_it_can_return_a_day_with_or_without_zeros(self):
+        """Days with leading zeros will be returned as just the number."""
+        self.assertEqual(format_day('01'), '1')
 
     def test_it_can_return_a_human_readable_date(self):
         """Given date as numbers, it can spell it out in normal format."""
