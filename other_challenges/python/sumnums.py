@@ -17,6 +17,11 @@ def sumnums(nums: list) -> list:
         sumnums([1, 3, 1, 8])
         >>> [1, 4, 5, 13]
     """
+    result = []
+    for index, num in enumerate(nums):
+        result.append(sum(nums[:index + 1]))
+
+    return result
 
 
 class SplitListTest(unittest.TestCase):
