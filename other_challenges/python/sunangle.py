@@ -5,13 +5,13 @@ import unittest
 def sun_angle(time: str) -> float:
     """Calculate the angle of the sun at a given time."""
     elapsed_mins = time_as_minutes(time)
-    if elapsed_mins < 360 or elapsed_mins > 1080:
-        return "I don't see the sun"
-    else:
+    if 360 <= elapsed_mins <= 1080:
         # 1440 mins in a day, 360 deg in a circle, offset by 90deg
         # compare the fraction of minutes per day to degrees in a circle
         # and then offset by 90 degrees so 6 is 0 deg and 18 is 180 deg
         return elapsed_mins / 1440 * 360 - 90
+    else:
+        return "I don't see the sun"
 
 
 def time_as_minutes(time: str) -> int:
