@@ -4,7 +4,11 @@ import unittest
 
 def sun_angle(time: str) -> float:
     """Calculate the angle of the sun at a given time."""
-    return 0
+    elapsed_mins = time_as_minutes(time)
+    if elapsed_mins < 360 or elapsed_mins > 1080:
+        return "I don't see the sun"
+    else:
+        return 0
 
 
 def time_as_minutes(time: str) -> int:
@@ -26,11 +30,17 @@ class SunAngleTest(unittest.TestCase):
         self.assertEqual(time_as_minutes("18:30"), 1110)
 
     def test_zero_degrees_at_sunrise(self):
+        """Sun angle is 0 at sunrise."""
         self.assertEqual(sun_angle("06:00"), 0)
 
     def test_zero_degrees_at_sunset(self):
+        """Sun angle is 0 at sunset."""
         self.assertEqual(sun_angle("18:00"), 0)
 
+    def test_no_sun_before_6_or_after_6(self):
+        """The sun is not in the sky before 6am or after 6pm."""
+
+    @unittest.skip("Work on zeros and nones first.")
     def test_90_degrees_at_noon(self):
         self.assertEqual(sun_angle("12:00"), 90)
 
