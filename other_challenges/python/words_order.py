@@ -43,6 +43,18 @@ class WordsOrderTest(unittest.TestCase):
             words_order('hi world im here', ['dog', 'lamb']), False
         )
 
+    def test_false_if_out_of_order(self):
+        """False if word list is out of order."""
+        self.assertEqual(
+            words_order('hi world im here', ['here', 'world']), False
+        )
+
+    def test_case_sensitive(self):
+        """False if words exist but are wrong case."""
+        self.assertEqual(
+            words_order('hi world im here', ['here', 'World']), False
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
