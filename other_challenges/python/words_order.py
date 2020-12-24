@@ -18,14 +18,30 @@ def words_order(phrase: str, word_list: list) -> bool:
         words_order('hi world im here', ['world', 'world'])
         >> False
     """
+    phrase = phrase.split()
+    for word in word_list:
+        if word in phrase:
+            phrase = phrase[phrase.index(word):]
+        else:
+            return False
+
+    return True
 
 
 class WordsOrderTest(unittest.TestCase):
     """Test for words_order function."""
 
-    def test_setup(self):
-        """Test unittest is set up properly."""
-        self.assertEqual(1, 1)
+    def test_basic_true(self):
+        """Test words in order and in the phrase are True."""
+        self.assertEqual(
+            words_order('hi world im here', ['world', 'here']), True
+        )
+
+    def test_basic_false(self):
+        """False if words not in phrase."""
+        self.assertEqual(
+            words_order('hi world im here', ['dog', 'lamb']), False
+        )
 
 
 if __name__ == '__main__':
