@@ -18,6 +18,9 @@ def words_order(phrase: str, word_list: list) -> bool:
         words_order('hi world im here', ['world', 'world'])
         >> False
     """
+    if len(word_list) != len(set(word_list)):
+        return False
+
     phrase = phrase.split()
     for word in word_list:
         if word in phrase:
@@ -53,6 +56,12 @@ class WordsOrderTest(unittest.TestCase):
         """False if words exist but are wrong case."""
         self.assertEqual(
             words_order('hi world im here', ['here', 'World']), False
+        )
+
+    def test_word_list_contains_unique_words(self):
+        """False if word list contains duplicates."""
+        self.assertEqual(
+            words_order('hi world im here', ['world', 'world']), False
         )
 
 
