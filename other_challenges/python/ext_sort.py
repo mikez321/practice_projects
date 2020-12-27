@@ -37,6 +37,12 @@ class ExtSortTest(unittest.TestCase):
             sort_by_ext(['1.cad', '1.bat', '1.aa']), ['1.aa', '1.bat', '1.cad']
         )
 
+    def test_it_can_have_no_extension(self):
+        """It can process files with no file extension."""
+        self.assertEqual(
+            sort_by_ext(['1.cad', '1.', '1.aa']), ['1.', '1.aa', '1.cad']
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
