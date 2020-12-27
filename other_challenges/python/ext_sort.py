@@ -23,7 +23,8 @@ def sort_by_ext(files: list) -> list:
             separated_names[ext].append(name)
 
     for extension in sorted(separated_names.keys()):
-        result.append(f"{separated_names[extension][0]}.{extension}")
+        for file in separated_names[extension]:
+            result.append(f"{file}.{extension}")
 
     return result
 
@@ -41,6 +42,12 @@ class ExtSortTest(unittest.TestCase):
         """It can process files with no file extension."""
         self.assertEqual(
             sort_by_ext(['1.cad', '1.', '1.aa']), ['1.', '1.aa', '1.cad']
+        )
+
+    def test_multiple_files_with_same_ext(self):
+        """If multiple files have the same ext they are sorted alphabetical."""
+        self.assertEqual(
+            sort_by_ext(['1.cad', '1.bat', '1.aa', '2.bat']), ['1.aa', '1.bat', '2.bat', '1.cad']
         )
 
 
