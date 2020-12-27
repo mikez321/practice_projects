@@ -1,6 +1,5 @@
 """Sort by extension challenge from checkio."""
 import unittest
-from IPython import embed
 
 
 def sort_by_ext(files: list) -> list:
@@ -15,8 +14,14 @@ def sort_by_ext(files: list) -> list:
     result = []
     separated_names = {}
     for file in files:
-        name = file.split(".")[0]
-        ext = file.split(".")[1]
+        split_file = file.split(".")
+        if len(split_file) > 2:
+            name = ".".join(split_file[:-1])
+            ext = split_file[-1]
+        else:
+            name = split_file[0]
+            ext = split_file[1]
+
         if separated_names.get(ext) is None:
             separated_names[ext] = [name]
         else:
@@ -50,6 +55,11 @@ class ExtSortTest(unittest.TestCase):
             sort_by_ext(['1.cad', '1.bat', '1.aa', '2.bat']), ['1.aa', '1.bat', '2.bat', '1.cad']
         )
 
+    def test_punctuation_in_filename(self):
+        """'table.imp.xls' has an extension 'xls' and a name 'table.imp'"""
+        self.assertEqual(
+            sort_by_ext(['1.cad', '1.bat', '1.aa', '1.aa.doc']), ['1.aa', '1.bat', '1.cad', '1.aa.doc']
+        )
 
 if __name__ == '__main__':
     unittest.main()
