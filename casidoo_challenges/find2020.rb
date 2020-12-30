@@ -14,7 +14,6 @@ def find2020(number, index = 0, result = -1)
       find2020(number, index, result)
     end
   end
-  result
 end
 
 class FindTwentyTwentyTest < Minitest::Test
@@ -28,7 +27,9 @@ class FindTwentyTwentyTest < Minitest::Test
     assert_equal(find2020('22200'), -1)
   end
 
-  # def test_it_can_find_a_2020
-  #   assert_equal(find2020('2002022020002'), 4)
-  # end
+  def test_it_can_find_a_2020
+    assert_equal(find2020('2002022020002'), 6)
+    assert_equal(find2020('00020002002020'), 10)
+    assert_equal(find2020('20200'), 0)
+  end
 end
