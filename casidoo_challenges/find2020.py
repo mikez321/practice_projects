@@ -10,6 +10,10 @@ def find2020(number: str) -> int:
     :result: If '2020' is in the given string, retun its starting index
         position.  If it is not in the string, return -1.
     """
+    try:
+        return number.index('2020')
+    except ValueError:
+        return -1
 
 
 class TwentTwentyTest(unittest.TestCase):
@@ -18,6 +22,11 @@ class TwentTwentyTest(unittest.TestCase):
     def test_setup(self):
         """Test unittest setup with 1 == 1."""
         self.assertEqual(1, 1)
+
+    def test_find_2020(self):
+        """Return -1 if 2020 not in string or index if it is."""
+        self.assertEqual(find2020('0000'), -1)
+        self.assertEqual(find2020('20002020'), 4)
 
 
 if __name__ == '__main__':
