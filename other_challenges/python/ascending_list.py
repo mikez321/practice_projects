@@ -1,5 +1,6 @@
 """Ascending list challenge from checkio."""
 import unittest
+from IPython import embed
 
 
 def is_ascending(nums: list) -> bool:
@@ -11,6 +12,12 @@ def is_ascending(nums: list) -> bool:
     """
     if len(nums) == 0 or len(nums) == 1:
         return True
+
+    for index, num in enumerate(nums[:-1]):
+        if num >= nums[index + 1]:
+            return False
+
+    return True
 
 
 class IsAscendingTest(unittest.TestCase):
@@ -32,7 +39,7 @@ class IsAscendingTest(unittest.TestCase):
     def test_equal_is_not_ascending(self):
         """Two equal numbers are not considered ascending."""
         self.assertEqual(is_ascending([1, 1]), False)
-
+    
     def test_it_can_do_multiple_nums(self):
         """It works on larger lists."""
         self.assertEqual(is_ascending([-5, 10, 99, 123456]), True)
