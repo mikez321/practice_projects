@@ -23,6 +23,14 @@ class TwentTwentyTest(unittest.TestCase):
         """Test unittest setup with 1 == 1."""
         self.assertEqual(1, 1)
 
+    def test_empty_string_is_minus_one(self):
+        """An empty string evaluates to -1."""
+        self.assertEqual(find2020(''), -1)
+
+    def test_a_single_number_is_minus_one(self):
+        """A single number also evaluates to -1."""
+        self.assertEqual(find2020('2'), -1)
+
     def test_find_2020(self):
         """Return -1 if 2020 not in string or index if it is."""
         self.assertEqual(find2020('0000'), -1)
