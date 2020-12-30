@@ -9,6 +9,8 @@ def is_ascending(nums: list) -> bool:
     :return: If the list is sorted from least to greatest value the function
         should return True.  Otherwise, it will return False.
     """
+    if len(nums) == 0 or len(nums) == 1:
+        return True
 
 
 class IsAscendingTest(unittest.TestCase):
