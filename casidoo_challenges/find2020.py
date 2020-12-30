@@ -10,10 +10,21 @@ def find2020(number: str) -> int:
     :result: If '2020' is in the given string, retun its starting index
         position.  If it is not in the string, return -1.
     """
-    try:
-        return number.index('2020')
-    except ValueError:
-        return -1
+    # This is probably how I'd use it IRL, but the instructions said no use
+    # of .index() type of methods.
+    # try:
+    #     return number.index('2020')
+    # except ValueError:
+    #     return -1
+    count = 0
+    while len(number) > 3:
+        if number[:4] == '2020':
+            return count
+        else:
+            count += 1
+            number = number[1:]
+
+    return -1
 
 
 class TwentTwentyTest(unittest.TestCase):
