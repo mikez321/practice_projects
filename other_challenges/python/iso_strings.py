@@ -16,10 +16,18 @@ def isometric_strings(str1: str, str2: str) -> bool:
         isometric_strings('foo', 'bar')
         >>> False
     """
-    if len(set(list(str1))) != len(set(list(str2))):
-        return False
+    # if len(set(list(str1))) != len(set(list(str2))):
+    #     return False
+    pattern1 = []
+    pattern2 = []
+    for char in str1:
+        pattern1.append(str1.index(char))
 
-    return True
+    for char in str2:
+        pattern2.append(str2.index(char))
+
+    return pattern1 == pattern2
+
 
 
 class IsoStringsTest(unittest.TestCase):
