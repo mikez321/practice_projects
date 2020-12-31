@@ -16,13 +16,13 @@ def test_it_ages():
     blake = Hobbit("Blake")
     assert blake.age == 0
 
-    for _ in range(0, 5):
+    for _ in range(5):
         blake.celebrate_birthday()
 
     assert blake.age == 5
     assert blake.is_adult() is False
 
-    for _ in range(0, 28):
+    for _ in range(28):
         blake.celebrate_birthday()
 
     assert blake.age == 33
