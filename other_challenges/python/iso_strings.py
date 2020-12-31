@@ -2,9 +2,10 @@
 import unittest
 
 
-def isometric_strings(str1: string, str2: string) -> bool:
+def isometric_strings(str1: str, str2: str) -> bool:
     """
     Return true if string1 and string2 are isometric.
+
     :example:
         add and egg are isometric because you can set a=e and d=g and they will
         spell out the two words respectively.
@@ -15,6 +16,10 @@ def isometric_strings(str1: string, str2: string) -> bool:
         isometric_strings('foo', 'bar')
         >>> False
     """
+    if len(set(list(str1))) != len(set(list(str2))):
+        return False
+
+    return True
 
 
 class IsoStringsTest(unittest.TestCase):
@@ -28,6 +33,21 @@ class IsoStringsTest(unittest.TestCase):
         """Egg and Add are isometric strings."""
         self.assertEqual(isometric_strings('add', 'egg'), True)
 
+    def test_foo(self):
+        """Foo and Bar are not isometric strings."""
+        self.assertEqual(isometric_strings('foo', 'bar'), False)
+
+    def test_empty(self):
+        """Empty strings are isometric."""
+        self.assertEqual(isometric_strings('', ''), True)
+
+    def test_same_strings(self):
+        """Two equal strings are isometric."""
+        self.assertEqual(isometric_strings('all', 'all'), True)
+
+    def test_isomorphic(self):
+        """Strings must have the same pattern to be isometric."""
+        self.assertEqual(isometric_strings('hall', 'hoop'), False)
 
 if __name__ == '__main__':
     unittest.main()
