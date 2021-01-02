@@ -5,13 +5,26 @@ import unittest
 # end.  I hope to be able to refactor it using tools I've learned over the
 # past few days... lambdas and regex.
 
+
 def is_acceptable_password(password: str) -> bool:
-    return pass_length(password) and pass_numeric(password) and no_p_word(password) and three_unique_chars(password)
+    """Return true if all criteria for passwords are met."""
+    acceptable_password = all([
+        pass_length(password),
+        pass_numeric(password),
+        no_p_word(password),
+        three_unique_chars(password),
+    ])
+
+    return acceptable_password
+
 
 def pass_length(password):
+    """Length of password must be at least 6 chars."""
     return len(password) >= 6
 
+
 def pass_numeric(password):
+    """Return true if it has a digit but false if all digits."""
     if len(password) > 9:
         return True
 
@@ -24,13 +37,17 @@ def pass_numeric(password):
 
     return True
 
+
 def no_p_word(password):
+    """Return false if it contains password in any case."""
     if "password" in password.casefold():
         return False
     else:
         return True
 
+
 def three_unique_chars(password):
+    """Return false if there are not at least 3 unique characters."""
     if len(set(password)) >= 3:
         return True
 
