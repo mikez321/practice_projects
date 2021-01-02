@@ -1,9 +1,9 @@
 """5 part password challenge from checkio."""
 import unittest
 # This was a 5 part password verification challenge from Checkio.org.
-# I completed it, but here I will just copy/paste my code and start from the
-# end.  I hope to be able to refactor it using tools I've learned over the
-# past few days... lambdas and regex.
+# I completed it (not too difficult) but here I'll do some refactoring using
+# Python/other things I've learned about over my Christmas/New Years break:
+# lambdas, ternerary operators and  regex.
 
 
 def is_acceptable_password(password: str) -> bool:
