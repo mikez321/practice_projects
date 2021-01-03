@@ -30,7 +30,7 @@ def pass_numeric(password):
     if len(password) > 9:
         return True
 
-    if re.search("\d", password) and re.search("(?i)[A-Z]", password):
+    if re.search("\d", password) and re.search("[A-z]", password):
         return True
     else:
         return False
