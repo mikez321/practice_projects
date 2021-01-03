@@ -1,5 +1,7 @@
 """5 part password challenge from checkio."""
 import unittest
+import re
+from IPython import embed
 # This was a 5 part password verification challenge from Checkio.org.
 # I completed it (not too difficult) but here I'll do some refactoring using
 # Python/other things I've learned about over my Christmas/New Years break:
@@ -28,14 +30,10 @@ def pass_numeric(password):
     if len(password) > 9:
         return True
 
-    nums = 0
-    for char in list(password):
-        if char.isnumeric():
-            nums += 1
-    if nums == 0 or len(password) == nums:
+    if re.search("\d", password) and re.search("(?i)[A-Z]", password):
+        return True
+    else:
         return False
-
-    return True
 
 
 def no_p_word(password):
