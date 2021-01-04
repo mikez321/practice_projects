@@ -30,18 +30,15 @@ def pass_numeric(password):
     if len(password) > 9:
         return True
 
-    if re.search("\d", password) and re.search("[A-z]", password):
-        return True
-    else:
-        return False
+    return re.search("[A-z]+\d|\d+[A-z]", password) is not None
 
 
 def no_p_word(password):
     """Return false if it contains password in any case."""
-    if "password" in password.casefold():
-        return False
-    else:
-        return True
+    result = True
+    result = False if re.search("(?i)password", password) else result
+
+    return result
 
 
 def three_unique_chars(password):
