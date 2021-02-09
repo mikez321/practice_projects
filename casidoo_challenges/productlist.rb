@@ -22,11 +22,7 @@ class ProductList
 
   def product(quantity)
     to_multiply = @list.reverse[0, quantity]
-    multiplied = 1
-    to_multiply.each do |n|
-      multiplied *= n.value
-    end
-    multiplied
+    to_multiply.reduce(1) { |result, num| result *= num.value }
   end
 end
 
