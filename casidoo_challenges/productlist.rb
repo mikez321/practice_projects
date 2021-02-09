@@ -63,5 +63,6 @@ class ProductListTest < Minitest::Test
 
     assert_equal(pl.product(1), 5)
     assert_equal(pl.product(2), 20)
+    assert_equal(pl.product(3), 60)
   end
 end
